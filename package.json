@@ -1,0 +1,29 @@
+{
+  "name": "abdul-malik-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Abdul Malik Khudus Shaik - AI Engineer & Full Stack Developer",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=3000",
+    "build": "echo 'Static site - no build step required'",
+    "start": "live-server --port=3000"
+  },
+  "keywords": [
+    "portfolio",
+    "ai-engineer",
+    "full-stack-developer",
+    "machine-learning",
+    "web-development",
+    "abdul-malik-shaik"
+  ],
+  "author": "Abdul Malik Khudus Shaik <shaikabdulmalik958@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samk-online/portfolio"
+  },
+  "homepage": "https://abdul-malik-portfolio.vercel.app",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
