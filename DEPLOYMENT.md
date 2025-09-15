@@ -44,7 +44,9 @@ This guide will help you deploy your portfolio website to Vercel for free hostin
    ```
 
 2. **Connect to Vercel**
-   - Go to [vercel.com](https://vercel.com)
+   - Go to [vercel.com](
+      
+      https://vercel.com)
    - Sign up/Login with GitHub
    - Click "New Project"
    - Import your GitHub repository
