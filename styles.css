@@ -566,6 +566,29 @@ body {
     box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
 }
 
+.project-card.featured {
+    grid-column: 1 / -1;
+    border: 5px solid #f7931e;
+    box-shadow: 0 10px 30px rgba(247, 147, 30, 0.4);
+    background: linear-gradient(135deg, #2a1a0a, #3a2a1a);
+}
+
+.project-card.featured:hover {
+    box-shadow: 0 20px 50px rgba(247, 147, 30, 0.7);
+}
+
+.project-card.featured .project-header {
+    background: linear-gradient(135deg, var(--game-primary), var(--game-secondary));
+}
+
+.project-card.featured .project-title {
+    font-size: 18px;
+}
+
+.project-card.featured .project-desc {
+    font-size: 11px;
+}
+
 .project-header {
     background: var(--game-primary);
     padding: 20px;
