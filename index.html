@@ -3,636 +3,526 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdul Malik Khudus Shaik - AI Engineer & Full Stack Developer</title>
+    <title>Abdul Malik's Career Journey - Road Trip Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <span class="logo-text">Abdul Malik Khudus</span>
-                <span class="logo-accent">Shaik</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><a href="https://drive.google.com/file/d/17d4SDKTTMxHWjPIxm94QLQ5j5C-Imsmb/view?usp=drive_link" target="_blank" class="nav-link resume-nav-btn">
-                    <i class="fas fa-file-pdf"></i>
-                    Resume
-                </a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
-    https://www.linkedin.com/in/abdul-malik-khudus-shaik-b46b161ab/
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        <span class="typing-text">Hi, I'm Abdul Malik Khudus Shaik</span>
-                    </h1>
-                    <h2 class="hero-subtitle">AI Engineer & Full Stack Developer</h2>
-                    <p class="hero-description">
-                        MSCS Graduate from George Mason University, passionate about AI, Machine Learning, Software Development
-                        and building innovative solutions that make a difference.
-                    </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">View My Work</a>
-                        <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-                        <a href="https://drive.google.com/file/d/17d4SDKTTMxHWjPIxm94QLQ5j5C-Imsmb/view?usp=drive_link" target="_blank" class="btn btn-resume">
-                            <i class="fas fa-file-pdf"></i>
-                            Resume
-                        </a>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/abdul-malik-khudus-shaik-b46b161ab/" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/samk-online" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="mailto:shaikabdulmalik958@gmail.com" class="social-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="hero-visual">
-                    <div class="profile-section">
-                        
-                        <div class="floating-elements">
-                            <div class="floating-card ai-card">
-                                <i class="fas fa-robot"></i>
-                                <span>AI/ML</span>
-                            </div>
-                            <div class="floating-card code-card">
-                                <i class="fas fa-code"></i>
-                                <span>Full Stack</span>
-                            </div>
-                            <div class="floating-card data-card">
-                                <i class="fas fa-chart-line"></i>
-                                <span>Data Science</span>
-                            </div>
-                            <div class="floating-card cloud-card">
-                                <i class="fas fa-cloud"></i>
-                                <span>Cloud</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-        </div>
-    </section>
+    <!-- Game Controls -->
+    <div class="game-controls">
+        <button class="control-btn" id="autoPlayBtn" title="Auto Play Journey">
+            <i class="fas fa-play"></i>
+        </button>
+        <button class="control-btn" id="pauseBtn" title="Pause">
+            <i class="fas fa-pause"></i>
+        </button>
+        <button class="control-btn" id="resetBtn" title="Reset Journey">
+            <i class="fas fa-redo"></i>
+        </button>
+        <a href="https://drive.google.com/file/d/17d4SDKTTMxHWjPIxm94QLQ5j5C-Imsmb/view?usp=drive_link" target="_blank" class="control-btn resume-btn" title="View Resume">
+            <i class="fas fa-file-pdf"></i>
+        </a>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-profile">
-                    <div class="about-image">
-                        <img src="ProfilePic.jpeg" alt="Abdul Malik Khudus Shaik" class="about-profile-img">
-                    </div>
-                </div>
-                <div class="about-text">
-                    <p class="about-intro">
-                        I'm a passionate AI Engineer and Full Stack Developer with a Master's degree in Computer Science 
-                        from George Mason University. I specialize in creating intelligent solutions that bridge the gap 
-                        between cutting-edge AI technology and practical applications, with hands-on experience in data analysis and business intelligence.
-                    </p>
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <h4>Education</h4>
-                                <p>MSCS Graduate from George Mason University</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-brain"></i>
-                            <div>
-                                <h4>Expertise</h4>
-                                <p>AI Engineering, Data Analysis, Business Intelligence</p>
-                            </div>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-rocket"></i>
-                            <div>
-                                <h4>Experience</h4>
-                                <p>AI Startup Intern & Data Analysis Professional</p>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Journey Progress Bar -->
+    <div class="journey-progress">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="progress-milestones">
+            <div class="milestone" data-location="start">Start</div>
+            <div class="milestone" data-location="projects">Projects</div>
+            <div class="milestone" data-location="career">Career</div>
+            <div class="milestone" data-location="education">Education</div>
+            <div class="milestone" data-location="skills">Skills</div>
+            <div class="milestone" data-location="contact">Contact</div>
+        </div>
+    </div>
+
+    <!-- Road Container -->
+    <div class="road-container">
+        <!-- The Road -->
+        <div class="road">
+            <div class="road-lines"></div>
+        </div>
+
+        <!-- Traveling Car -->
+        <div class="car" id="travelCar">
+            <i class="fas fa-car"></i>
+        </div>
+
+        <!-- Journey Start - Today's Date -->
+        <section class="journey-stop start-location" id="start">
+            <div class="stop-marker">
+                <div class="marker-icon">
+                    <i class="fas fa-flag-checkered"></i>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="experience-grid">
-                <!-- Work Experience Column -->
-                <div class="experience-column">
-                    <h3 class="column-title">
-                        <i class="fas fa-briefcase"></i>
-                        Work Experience
-                    </h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>AI Engineer Intern</h4>
-                                <span class="timeline-date">July 2025 - Present</span>
-                                <div class="institution">AI Stealth Startup</div>
-                                <p>Working on cutting-edge AI solutions and machine learning models. 
-                                   Developing innovative approaches to artificial intelligence applications 
-                                   and contributing to next-generation AI technologies.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Software Engineering and Data Analysis Intern</h4>
-                                <span class="timeline-date">June 2024 - May 2025</span>
-                                <div class="institution">MyLLife</div>
-                                <p>Analyzing complex datasets to derive actionable insights and support 
-                                   data-driven decision making. Implementing statistical models and 
-                                   visualization tools to present findings effectively. Developed and deployed 
-                                   a sophisticated RAG (Retrieval-Augmented Generation) bot system to enhance 
-                                   customer support and automate information retrieval processes, improving 
-                                   response accuracy and reducing query resolution time.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Business Analysis Intern</h4>
-                                <span class="timeline-date">May 2022 - June 2023</span>
-                                <div class="institution">Little Star Food</div>
-                                <p>Conducted comprehensive business analysis to optimize operations and 
-                                   improve efficiency. Analyzed market trends, customer data, and 
-                                   business processes to provide strategic recommendations.</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="stop-content">
+                <div class="location-sign">
+                    <h1>Journey Begins</h1>
+                    <div class="current-date" id="currentDate"></div>
                 </div>
-
-                <!-- Education Column -->
-                <div class="experience-column">
-                    <h3 class="column-title">
-                        <i class="fas fa-graduation-cap"></i>
-                        Education
-                    </h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Master of Science in Computer Science</h4>
-                                <span class="timeline-date">August 2023 - December 2024</span>
-                                <div class="institution">George Mason University, Fairfax, VA</div>
-                                <p>Completed MSCS with focus on AI/ML, Data Structures, Algorithms, 
-                                   and Software Engineering principles. Specialized in Generative AI and 
-                                   large language models with hands-on research experience. Served as a 
-                                   Graduate Teaching Assistant, mentoring students in computer science 
-                                   fundamentals while advancing AI research and practical applications.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Bachelor's Degree in Computer Science</h4>
-                                <span class="timeline-date">2019 - 2023</span>
-                                <div class="institution">B V Raju Institute of Technology</div>
-                                <p>Completed comprehensive foundation in computer science fundamentals, 
-                                   programming languages, data structures, algorithms, and software 
-                                   development methodologies. Strong background in mathematics and engineering principles.</p>
-                            </div>
-                        </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-content">
-                                <h4>Continuous Learning & Professional Development</h4>
-                                <span class="timeline-date">Ongoing</span>
-                                <div class="institution">Various Platforms & Certifications</div>
-                                <p>Actively pursuing advanced certifications in AI/ML, cloud computing, 
-                                   and staying current with emerging technologies. Participating in hackathons, 
-                                   research projects, and professional development programs.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-        
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-dumbbell project-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>WhoopCoach</h3>
-                        <p>AI-powered fitness coaching application built with TypeScript, providing personalized workout recommendations and health insights.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">TypeScript</span>
-                            <span class="tech-tag">AI/ML</span>
-                            <span class="tech-tag">Health Tech</span>
-                        </div>
-                        
-                        <div class="project-links">
-                            <a href="https://github.com/samk-online/WhoopCoach" target="_blank" class="project-link">
+                <div class="hero-intro">
+                    <div class="profile-card">
+                        <img src="ProfilePic.jpeg" alt="Abdul Malik Khudus Shaik" class="profile-image">
+                        <h2>Abdul Malik Khudus Shaik</h2>
+                        <p class="tagline">AI Engineer & Full Stack Developer</p>
+                        <p class="intro-text">
+                            MSCS Graduate from George Mason University, passionate about AI, Machine Learning,
+                            and building innovative solutions that make a difference.
+                        </p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/abdul-malik-khudus-shaik-b46b161ab/" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/samk-online" target="_blank">
                                 <i class="fab fa-github"></i>
+                            </a>
+                            <a href="mailto:shaikabdulmalik958@gmail.com">
+                                <i class="fas fa-envelope"></i>
                             </a>
                         </div>
                     </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-shield-alt project-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>verifAIed</h3>
-                        <p>Comprehensive AI-powered verification platform that detects deepfakes, validates document authenticity, and ensures content integrity. Features advanced computer vision models, multi-modal analysis, and real-time verification APIs for enterprise security solutions.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Deepfake Detection</span>
-                            <span class="tech-tag">Document Verification</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/samk-online/verifAIed" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-file-medical project-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Docorama</h3>
-                        <p>NYC Consumer AI Hackathon project - Healthcare document management system with AI-powered analysis and insights.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">HTML/CSS</span>
-                            <span class="tech-tag">Healthcare AI</span>
-                            <span class="tech-tag">Hackathon</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/samk-online/Docorama" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-comments project-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>ChatGmu</h3>
-                        <p>AI chatbot built using OpenAI API and Streamlit, hosted on Amazon EC2 servers. Provides intelligent conversational experiences.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">OpenAI</span>
-                            <span class="tech-tag">AWS EC2</span>
-                            <span class="tech-tag">Streamlit</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/samk-online/ChatGmu" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-basketball-ball project-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>HoopSters</h3>
-                        <p>Mobile application built with Flutter/Dart for basketball enthusiasts, featuring game statistics and player analytics.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Dart</span>
-                            <span class="tech-tag">Flutter</span>
-                            <span class="tech-tag">Mobile Dev</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/samk-online/HoopSters" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-microphone project-icon"></i>
-                    </div>
-                    <div class="project-content">
-                        <h3>Catering Voice Agent</h3>
-                        <p>AI-powered voice agent for catering services, built with Python, enabling natural language interactions for order management.</p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">Voice AI</span>
-                            <span class="tech-tag">NLP</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/samk-online/catering-service-voice-agent" target="_blank" class="project-link">
-                                <i class="fab fa-github"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Artificial Intelligence</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-link"></i>
-                            <span>LangChain</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-search"></i>
-                            <span>LlamaIndex</span>
-                        </div>
-                        <div class="skill-item">
+                    <div class="journey-badges">
+                        <div class="badge-item">
                             <i class="fas fa-robot"></i>
-                            <span>RAG</span>
+                            <span>AI/ML</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-brain"></i>
-                            <span>LLM</span>
+                        <div class="badge-item">
+                            <i class="fas fa-code"></i>
+                            <span>Full Stack</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>VectorDB</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-project-diagram"></i>
-                            <span>LangGraph</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Machine Learning & NLP</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-fire"></i>
-                            <span>PyTorch</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-cube"></i>
-                            <span>TensorFlow</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-exchange-alt"></i>
-                            <span>Transformers</span>
-                        </div>
-                        <div class="skill-item">
+                        <div class="badge-item">
                             <i class="fas fa-chart-line"></i>
-                            <span>scikit-learn</span>
+                            <span>Data Science</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-adjust"></i>
-                            <span>Fine-tuning</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-network-wired"></i>
-                            <span>Deep Learning</span>
+                        <div class="badge-item">
+                            <i class="fas fa-cloud"></i>
+                            <span>Cloud</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="skill-category">
-                    <h3>Application Development</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fab fa-react"></i>
-                            <span>React</span>
+        <!-- Projects Park -->
+        <section class="journey-stop projects-park" id="projects">
+            <div class="stop-marker">
+                <div class="marker-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+            </div>
+            <div class="stop-content">
+                <div class="location-sign">
+                    <h2><i class="fas fa-map-signs"></i> Projects Park</h2>
+                    <p>Explore my innovative creations</p>
+                </div>
+                <div class="park-layout">
+                    <!-- Project Card 1 -->
+                    <div class="project-booth">
+                        <div class="booth-roof">
+                            <i class="fas fa-dumbbell"></i>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-vuejs"></i>
-                            <span>Vue.js</span>
+                        <div class="booth-content">
+                            <h3>WhoopCoach</h3>
+                            <p>AI-powered fitness coaching application built with TypeScript, providing personalized workout recommendations and health insights.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">TypeScript</span>
+                                <span class="tech-tag">AI/ML</span>
+                                <span class="tech-tag">Health Tech</span>
+                            </div>
+                            <a href="https://github.com/samk-online/WhoopCoach" target="_blank" class="booth-btn">
+                                <i class="fab fa-github"></i> View Project
+                            </a>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-angular"></i>
-                            <span>Angular</span>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="project-booth">
+                        <div class="booth-roof">
+                            <i class="fas fa-shield-alt"></i>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-node-js"></i>
-                            <span>Node.js</span>
+                        <div class="booth-content">
+                            <h3>verifAIed</h3>
+                            <p>Comprehensive AI-powered verification platform that detects deepfakes, validates document authenticity, and ensures content integrity.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Deepfake Detection</span>
+                                <span class="tech-tag">Document Verification</span>
+                            </div>
+                            <a href="https://github.com/samk-online/verifAIed" target="_blank" class="booth-btn">
+                                <i class="fab fa-github"></i> View Project
+                            </a>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-bolt"></i>
-                            <span>FastAPI</span>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="project-booth">
+                        <div class="booth-roof">
+                            <i class="fas fa-file-medical"></i>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-flask"></i>
-                            <span>Django/Flask</span>
+                        <div class="booth-content">
+                            <h3>Docorama</h3>
+                            <p>NYC Consumer AI Hackathon project - Healthcare document management system with AI-powered analysis and insights.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">HTML/CSS</span>
+                                <span class="tech-tag">Healthcare AI</span>
+                                <span class="tech-tag">Hackathon</span>
+                            </div>
+                            <a href="https://github.com/samk-online/Docorama" target="_blank" class="booth-btn">
+                                <i class="fab fa-github"></i> View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4 -->
+                    <div class="project-booth">
+                        <div class="booth-roof">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="booth-content">
+                            <h3>ChatGmu</h3>
+                            <p>AI chatbot built using OpenAI API and Streamlit, hosted on Amazon EC2 servers. Provides intelligent conversational experiences.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">OpenAI</span>
+                                <span class="tech-tag">AWS EC2</span>
+                            </div>
+                            <a href="https://github.com/samk-online/ChatGmu" target="_blank" class="booth-btn">
+                                <i class="fab fa-github"></i> View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 5 -->
+                    <div class="project-booth">
+                        <div class="booth-roof">
+                            <i class="fas fa-basketball-ball"></i>
+                        </div>
+                        <div class="booth-content">
+                            <h3>HoopSters</h3>
+                            <p>Mobile application built with Flutter/Dart for basketball enthusiasts, featuring game statistics and player analytics.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Dart</span>
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Mobile Dev</span>
+                            </div>
+                            <a href="https://github.com/samk-online/HoopSters" target="_blank" class="booth-btn">
+                                <i class="fab fa-github"></i> View Project
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 6 -->
+                    <div class="project-booth">
+                        <div class="booth-roof">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <div class="booth-content">
+                            <h3>Catering Voice Agent</h3>
+                            <p>AI-powered voice agent for catering services, built with Python, enabling natural language interactions for order management.</p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Voice AI</span>
+                                <span class="tech-tag">NLP</span>
+                            </div>
+                            <a href="https://github.com/samk-online/catering-service-voice-agent" target="_blank" class="booth-btn">
+                                <i class="fab fa-github"></i> View Project
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="skill-category">
-                    <h3>Data & Analytics</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fas fa-calculator"></i>
-                            <span>NumPy</span>
+        <!-- Career Town -->
+        <section class="journey-stop career-town" id="career">
+            <div class="stop-marker">
+                <div class="marker-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+            </div>
+            <div class="stop-content">
+                <div class="location-sign">
+                    <h2><i class="fas fa-briefcase"></i> Career Town</h2>
+                    <p>My professional journey</p>
+                </div>
+                <div class="town-buildings">
+                    <!-- Career Building 1 -->
+                    <div class="career-building current">
+                        <div class="building-top">
+                            <i class="fas fa-robot"></i>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-table"></i>
-                            <span>Pandas</span>
+                        <div class="building-content">
+                            <h3>AI Engineer Intern</h3>
+                            <div class="building-date">July 2025 - Present</div>
+                            <div class="building-company">AI Stealth Startup</div>
+                            <p>Working on cutting-edge AI solutions and machine learning models. Developing innovative approaches to artificial intelligence applications and contributing to next-generation AI technologies.</p>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-wrench"></i>
-                            <span>Feature Engineering</span>
-                        </div>
-                        <div class="skill-item">
+                    </div>
+
+                    <!-- Career Building 2 -->
+                    <div class="career-building">
+                        <div class="building-top">
                             <i class="fas fa-chart-bar"></i>
-                            <span>Statistical Analysis</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-vial"></i>
-                            <span>Hypothesis Testing</span>
+                        <div class="building-content">
+                            <h3>Software Engineering and Data Analysis Intern</h3>
+                            <div class="building-date">June 2024 - May 2025</div>
+                            <div class="building-company">MyLLife</div>
+                            <p>Analyzing complex datasets to derive actionable insights and support data-driven decision making. Developed and deployed a sophisticated RAG bot system to enhance customer support and automate information retrieval processes.</p>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-file-excel"></i>
-                            <span>Excel</span>
+                    </div>
+
+                    <!-- Career Building 3 -->
+                    <div class="career-building">
+                        <div class="building-top">
+                            <i class="fas fa-business-time"></i>
+                        </div>
+                        <div class="building-content">
+                            <h3>Business Analysis Intern</h3>
+                            <div class="building-date">May 2022 - June 2023</div>
+                            <div class="building-company">Little Star Food</div>
+                            <p>Conducted comprehensive business analysis to optimize operations and improve efficiency. Analyzed market trends, customer data, and business processes to provide strategic recommendations.</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="skill-category">
-                    <h3>Cloud & Infrastructure</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
-                            <i class="fab fa-aws"></i>
-                            <span>AWS</span>
+        <!-- Achievement Avenue / Education -->
+        <section class="journey-stop achievement-avenue" id="education">
+            <div class="stop-marker">
+                <div class="marker-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+            </div>
+            <div class="stop-content">
+                <div class="location-sign">
+                    <h2><i class="fas fa-trophy"></i> Achievement Avenue</h2>
+                    <p>Educational milestones & accomplishments</p>
+                </div>
+                <div class="achievement-street">
+                    <!-- Achievement 1 -->
+                    <div class="achievement-house">
+                        <div class="house-roof">
+                            <i class="fas fa-university"></i>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>Supabase</span>
+                        <div class="house-content">
+                            <h3>Master of Science in Computer Science</h3>
+                            <div class="achievement-date">August 2023 - December 2024</div>
+                            <div class="achievement-place">George Mason University, Fairfax, VA</div>
+                            <p>Completed MSCS with focus on AI/ML, Data Structures, Algorithms, and Software Engineering principles. Specialized in Generative AI and large language models with hands-on research experience. Served as a Graduate Teaching Assistant.</p>
+                            <div class="achievement-badges">
+                                <span class="badge">AI/ML Focus</span>
+                                <span class="badge">Research</span>
+                                <span class="badge">Teaching Assistant</span>
+                            </div>
                         </div>
-                        <div class="skill-item">
+                    </div>
+
+                    <!-- Achievement 2 -->
+                    <div class="achievement-house">
+                        <div class="house-roof">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="house-content">
+                            <h3>Bachelor's Degree in Computer Science</h3>
+                            <div class="achievement-date">2019 - 2023</div>
+                            <div class="achievement-place">B V Raju Institute of Technology</div>
+                            <p>Completed comprehensive foundation in computer science fundamentals, programming languages, data structures, algorithms, and software development methodologies.</p>
+                            <div class="achievement-badges">
+                                <span class="badge">CS Fundamentals</span>
+                                <span class="badge">Software Dev</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Achievement 3 -->
+                    <div class="achievement-house">
+                        <div class="house-roof">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="house-content">
+                            <h3>Continuous Learning & Certifications</h3>
+                            <div class="achievement-date">Ongoing</div>
+                            <div class="achievement-place">Various Platforms</div>
+                            <p>Actively pursuing advanced certifications in AI/ML, cloud computing, and staying current with emerging technologies. Participating in hackathons, research projects, and professional development programs.</p>
+                            <div class="achievement-badges">
+                                <span class="badge">Lifelong Learning</span>
+                                <span class="badge">Hackathons</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Station -->
+        <section class="journey-stop skills-station" id="skills">
+            <div class="stop-marker">
+                <div class="marker-icon">
+                    <i class="fas fa-gas-pump"></i>
+                </div>
+            </div>
+            <div class="stop-content">
+                <div class="location-sign">
+                    <h2><i class="fas fa-tools"></i> Skills Station</h2>
+                    <p>Fuel up with technical expertise</p>
+                </div>
+                <div class="station-pumps">
+                    <!-- Skill Pump 1 -->
+                    <div class="skill-pump">
+                        <div class="pump-head">
                             <i class="fas fa-brain"></i>
-                            <span>SageMaker</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fab fa-google"></i>
-                            <span>GCP</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-docker"></i>
-                            <span>Docker</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-dharmachakra"></i>
-                            <span>Kubernetes</span>
+                        <div class="pump-label">Artificial Intelligence</div>
+                        <div class="fuel-tags">
+                            <span class="fuel-tag">LangChain</span>
+                            <span class="fuel-tag">LlamaIndex</span>
+                            <span class="fuel-tag">RAG</span>
+                            <span class="fuel-tag">LLM</span>
+                            <span class="fuel-tag">VectorDB</span>
+                            <span class="fuel-tag">LangGraph</span>
                         </div>
                     </div>
-                </div>
 
-                <div class="skill-category">
-                    <h3>Databases & Development</h3>
-                    <div class="skills-list">
-                        <div class="skill-item">
+                    <!-- Skill Pump 2 -->
+                    <div class="skill-pump">
+                        <div class="pump-head">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="pump-label">Machine Learning & NLP</div>
+                        <div class="fuel-tags">
+                            <span class="fuel-tag">PyTorch</span>
+                            <span class="fuel-tag">TensorFlow</span>
+                            <span class="fuel-tag">Transformers</span>
+                            <span class="fuel-tag">scikit-learn</span>
+                            <span class="fuel-tag">Fine-tuning</span>
+                            <span class="fuel-tag">Deep Learning</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Pump 3 -->
+                    <div class="skill-pump">
+                        <div class="pump-head">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="pump-label">Application Development</div>
+                        <div class="fuel-tags">
+                            <span class="fuel-tag">React</span>
+                            <span class="fuel-tag">Vue.js</span>
+                            <span class="fuel-tag">Angular</span>
+                            <span class="fuel-tag">Node.js</span>
+                            <span class="fuel-tag">FastAPI</span>
+                            <span class="fuel-tag">Django/Flask</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Pump 4 -->
+                    <div class="skill-pump">
+                        <div class="pump-head">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="pump-label">Data & Analytics</div>
+                        <div class="fuel-tags">
+                            <span class="fuel-tag">NumPy</span>
+                            <span class="fuel-tag">Pandas</span>
+                            <span class="fuel-tag">Feature Engineering</span>
+                            <span class="fuel-tag">Statistical Analysis</span>
+                            <span class="fuel-tag">Hypothesis Testing</span>
+                            <span class="fuel-tag">Excel</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Pump 5 -->
+                    <div class="skill-pump">
+                        <div class="pump-head">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="pump-label">Cloud & Infrastructure</div>
+                        <div class="fuel-tags">
+                            <span class="fuel-tag">AWS</span>
+                            <span class="fuel-tag">Supabase</span>
+                            <span class="fuel-tag">SageMaker</span>
+                            <span class="fuel-tag">GCP</span>
+                            <span class="fuel-tag">Docker</span>
+                            <span class="fuel-tag">Kubernetes</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill Pump 6 -->
+                    <div class="skill-pump">
+                        <div class="pump-head">
                             <i class="fas fa-database"></i>
-                            <span>PostgreSQL</span>
                         </div>
-                        <div class="skill-item">
-                            <i class="fas fa-leaf"></i>
-                            <span>MongoDB</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>MySQL</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-exchange-alt"></i>
-                            <span>RESTful APIs</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-layer-group"></i>
-                            <span>Microservices</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-code-branch"></i>
-                            <span>Agile (Scrum)</span>
+                        <div class="pump-label">Databases & Development</div>
+                        <div class="fuel-tags">
+                            <span class="fuel-tag">PostgreSQL</span>
+                            <span class="fuel-tag">MongoDB</span>
+                            <span class="fuel-tag">MySQL</span>
+                            <span class="fuel-tag">RESTful APIs</span>
+                            <span class="fuel-tag">Microservices</span>
+                            <span class="fuel-tag">Agile</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>I'm always interested in discussing new opportunities, innovative projects, and collaborations in AI and software development.</p>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <a href="mailto:shaikabdulmalik958@gmail.com">shaikabdulmalik958@gmail.com</a>
-                            </div>
+        <!-- Contact Destination -->
+        <section class="journey-stop contact-destination" id="contact">
+            <div class="stop-marker">
+                <div class="marker-icon finish">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+            </div>
+            <div class="stop-content">
+                <div class="location-sign">
+                    <h2><i class="fas fa-envelope-open-text"></i> Contact Destination</h2>
+                    <p>Let's connect and build something amazing</p>
+                </div>
+                <div class="destination-center">
+                    <div class="contact-booth">
+                        <h3>Get In Touch</h3>
+                        <p>I'm always interested in discussing new opportunities, innovative projects, and collaborations in AI and software development.</p>
+
+                        <div class="contact-channels">
+                            <a href="mailto:shaikabdulmalik958@gmail.com" class="contact-channel">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <h4>Email</h4>
+                                    <span>shaikabdulmalik958@gmail.com</span>
+                                </div>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/abdul-malik-khudus-shaik-b46b161ab/" target="_blank" class="contact-channel">
+                                <i class="fab fa-linkedin"></i>
+                                <div>
+                                    <h4>LinkedIn</h4>
+                                    <span>abdul-malik-khudus-shaik</span>
+                                </div>
+                            </a>
+
+                            <a href="https://github.com/samk-online" target="_blank" class="contact-channel">
+                                <i class="fab fa-github"></i>
+                                <div>
+                                    <h4>GitHub</h4>
+                                    <span>github.com/samk-online</span>
+                                </div>
+                            </a>
                         </div>
-                        <div class="contact-method">
-                            <i class="fab fa-linkedin"></i>
-                            <div>
-                                <h4>LinkedIn</h4>
-                                <a href="https://www.linkedin.com/in/abdul-malik-khudus-shaik-b46b161ab/" target="_blank">abdul-malik-khudus-shaik</a>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fab fa-github"></i>
-                            <div>
-                                <h4>GitHub</h4>
-                                <a href="https://github.com/samk-online" target="_blank">github.com/samk-online</a>
-                            </div>
+
+                        <div class="journey-complete">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Journey Complete!</h3>
+                            <p>Thanks for traveling through my career journey</p>
                         </div>
                     </div>
                 </div>
-
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-social">
-                    <a href="https://www.linkedin.com/in/abdul-malik-khudus-shaik-b46b161ab/" target="_blank" class="social-link">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/samk-online" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="mailto:shaikabdulmalik958@gmail.com" class="social-link">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+        </section>
+    </div>
 
     <script src="script.js"></script>
 </body>
