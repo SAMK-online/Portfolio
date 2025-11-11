@@ -1,23 +1,34 @@
 // Global Variables
 let isAutoPlaying = false;
 let autoPlayInterval;
-const scrollSpeed = 2; // pixels per frame
+const scrollSpeed = 3; // pixels per frame
+let lastScrollPos = 0;
+let currentSpeed = 0;
+
+// Checkpoint names
+const checkpoints = {
+    'start': 'START',
+    'projects': 'PROJECTS ZONE',
+    'career': 'CAREER HQ',
+    'education': 'ACHIEVEMENTS',
+    'skills': 'POWER-UPS',
+    'contact': 'FINISH LINE'
+};
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-    initializeJourney();
+    initializeGame();
     setupEventListeners();
-    updateCarPosition();
-    updateProgress();
+    updateGameHUD();
 });
 
-// Initialize Journey
-function initializeJourney() {
+// Initialize Game
+function initializeGame() {
     // Set current date
     const currentDateElement = document.getElementById('currentDate');
     const today = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    currentDateElement.textContent = today.toLocaleDateString('en-US', options);
+    currentDateElement.textContent = '📅 ' + today.toLocaleDateString('en-US', options);
 
     // Animate elements on scroll
     observeElements();
@@ -31,39 +42,33 @@ function setupEventListeners() {
 
     // Pause Button
     const pauseBtn = document.getElementById('pauseBtn');
-    pauseBtn.addEventListener('click', pauseJourney);
+    pauseBtn.addEventListener('click', pauseGame);
 
     // Reset Button
     const resetBtn = document.getElementById('resetBtn');
-    resetBtn.addEventListener('click', resetJourney);
+    resetBtn.addEventListener('click', resetGame);
 
-    // Scroll listener for car position and progress
+    // Scroll listener for game updates
     window.addEventListener('scroll', () => {
-        updateCarPosition();
-        updateProgress();
-        updateActiveMilestone();
-    });
-
-    // Milestone navigation
-    const milestones = document.querySelectorAll('.milestone');
-    milestones.forEach(milestone => {
-        milestone.addEventListener('click', (e) => {
-            const location = e.target.dataset.location;
-            navigateToLocation(location);
-        });
-    });
+        updateGameHUD();
+        calculateSpeed();
+        updateCarAnimation();
+    }, { passive: true });
 }
 
 // Auto Play Toggle
 function toggleAutoPlay() {
     isAutoPlaying = !isAutoPlaying;
     const autoPlayBtn = document.getElementById('autoPlayBtn');
+    const car = document.getElementById('gameCar');
 
     if (isAutoPlaying) {
         autoPlayBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        car.classList.add('moving');
         startAutoPlay();
     } else {
         autoPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+        car.classList.remove('moving');
         stopAutoPlay();
     }
 }
@@ -76,7 +81,9 @@ function startAutoPlay() {
         if (window.pageYOffset >= maxScroll) {
             stopAutoPlay();
             const autoPlayBtn = document.getElementById('autoPlayBtn');
+            const car = document.getElementById('gameCar');
             autoPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+            car.classList.remove('moving');
             isAutoPlaying = false;
             return;
         }
@@ -93,20 +100,24 @@ function stopAutoPlay() {
     }
 }
 
-// Pause Journey
-function pauseJourney() {
+// Pause Game
+function pauseGame() {
     stopAutoPlay();
     isAutoPlaying = false;
     const autoPlayBtn = document.getElementById('autoPlayBtn');
+    const car = document.getElementById('gameCar');
     autoPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+    car.classList.remove('moving');
 }
 
-// Reset Journey
-function resetJourney() {
+// Reset Game
+function resetGame() {
     stopAutoPlay();
     isAutoPlaying = false;
     const autoPlayBtn = document.getElementById('autoPlayBtn');
+    const car = document.getElementById('gameCar');
     autoPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+    car.classList.remove('moving');
 
     // Smooth scroll to top
     window.scrollTo({
@@ -115,69 +126,73 @@ function resetJourney() {
     });
 }
 
-// Update Car Position
-function updateCarPosition() {
-    const car = document.getElementById('travelCar');
-    const scrollPercent = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+// Calculate Speed based on scroll velocity
+function calculateSpeed() {
+    const currentScrollPos = window.pageYOffset;
+    const scrollDelta = Math.abs(currentScrollPos - lastScrollPos);
 
-    // Keep car in viewport but move slightly based on scroll
-    // Car stays mostly fixed but wobbles slightly
-    const baseTop = 100;
-    const wobble = Math.sin(scrollPercent / 10) * 10;
-    car.style.top = `${baseTop + wobble}px`;
+    // Calculate speed (pixels per frame converted to km/h for game feel)
+    currentSpeed = Math.min(Math.round(scrollDelta * 5), 200);
+
+    lastScrollPos = currentScrollPos;
+
+    // Update speed display
+    document.getElementById('speedValue').textContent = currentSpeed + ' KM/H';
+
+    // Update speed meter fill
+    const speedFill = document.getElementById('speedFill');
+    const speedPercent = (currentSpeed / 200) * 100;
+    speedFill.style.width = speedPercent + '%';
+
+    // Decay speed if not scrolling
+    setTimeout(() => {
+        if (currentSpeed > 0) {
+            currentSpeed = Math.max(0, currentSpeed - 5);
+        }
+    }, 100);
 }
 
-// Update Progress Bar
-function updateProgress() {
-    const progressBar = document.getElementById('progressBar');
+// Update Game HUD
+function updateGameHUD() {
+    // Calculate progress
     const scrollPercent = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById('progressValue').textContent = Math.round(scrollPercent) + '%';
 
-    progressBar.style.setProperty('--progress', `${scrollPercent}%`);
-    progressBar.style.background = `linear-gradient(to bottom,
-        #4CAF50 0%,
-        #8BC34A ${scrollPercent}%,
-        rgba(0,0,0,0.1) ${scrollPercent}%,
-        rgba(0,0,0,0.1) 100%)`;
+    // Calculate distance (based on scroll percentage)
+    const totalDistance = 100; // Total journey is 100 km
+    const currentDistance = Math.round((scrollPercent / 100) * totalDistance);
+    document.getElementById('distanceValue').textContent = currentDistance + ' KM';
+
+    // Update current checkpoint
+    updateCheckpoint();
 }
 
-// Update Active Milestone
-function updateActiveMilestone() {
+// Update Current Checkpoint
+function updateCheckpoint() {
     const sections = document.querySelectorAll('.journey-stop');
-    const milestones = document.querySelectorAll('.milestone');
-
-    let currentSection = '';
+    let currentCheckpoint = 'START';
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
 
         if (window.pageYOffset >= sectionTop - 300) {
-            currentSection = section.id;
+            const sectionId = section.id;
+            currentCheckpoint = checkpoints[sectionId] || 'UNKNOWN';
         }
     });
 
-    milestones.forEach(milestone => {
-        milestone.classList.remove('active');
-        if (milestone.dataset.location === currentSection) {
-            milestone.classList.add('active');
-        }
-    });
+    document.getElementById('checkpointValue').textContent = currentCheckpoint;
 }
 
-// Navigate to Location
-function navigateToLocation(location) {
-    const targetSection = document.getElementById(location);
+// Update Car Animation based on speed
+function updateCarAnimation() {
+    const car = document.getElementById('gameCar');
 
-    if (targetSection) {
-        // Stop auto play if active
-        if (isAutoPlaying) {
-            pauseJourney();
-        }
-
-        targetSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+    if (currentSpeed > 10) {
+        car.classList.add('moving');
+    } else {
+        car.classList.remove('moving');
     }
 }
 
@@ -194,7 +209,7 @@ function observeElements() {
                 entry.target.classList.add('animate-in');
 
                 // Animate children with delay
-                const children = entry.target.querySelectorAll('.project-booth, .career-building, .achievement-house, .skill-pump');
+                const children = entry.target.querySelectorAll('.project-card, .career-building, .achievement-card, .skill-machine');
                 children.forEach((child, index) => {
                     setTimeout(() => {
                         child.style.opacity = '1';
@@ -212,7 +227,7 @@ function observeElements() {
     });
 
     // Set initial state for animated elements
-    const animatedElements = document.querySelectorAll('.project-booth, .career-building, .achievement-house, .skill-pump');
+    const animatedElements = document.querySelectorAll('.project-card, .career-building, .achievement-card, .skill-machine');
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
@@ -230,106 +245,50 @@ document.addEventListener('keydown', (e) => {
 
     // Escape to pause
     if (e.code === 'Escape') {
-        pauseJourney();
+        pauseGame();
     }
 
     // Home key to reset
     if (e.code === 'Home') {
         e.preventDefault();
-        resetJourney();
+        resetGame();
     }
 
     // Arrow keys for manual scrolling
     if (e.code === 'ArrowDown') {
         e.preventDefault();
-        window.scrollBy({ top: 100, behavior: 'smooth' });
+        window.scrollBy({ top: 150, behavior: 'smooth' });
     }
 
     if (e.code === 'ArrowUp') {
         e.preventDefault();
-        window.scrollBy({ top: -100, behavior: 'smooth' });
+        window.scrollBy({ top: -150, behavior: 'smooth' });
     }
 });
 
-// Add parallax effect to road
-window.addEventListener('scroll', () => {
-    const road = document.querySelector('.road');
-    const roadLines = document.querySelector('.road-lines');
-    const scrolled = window.pageYOffset;
-
-    // Parallax effect - slight movement
-    if (road) {
-        const parallaxSpeed = scrolled * 0.05;
-        road.style.transform = `translateX(-50%) translateY(${parallaxSpeed}px)`;
-    }
-});
-
-// Animate milestone on hover
-const milestones = document.querySelectorAll('.milestone');
-milestones.forEach((milestone, index) => {
-    milestone.addEventListener('mouseenter', () => {
-        milestone.style.transform = 'translateX(5px) scale(1.1)';
-    });
-
-    milestone.addEventListener('mouseleave', () => {
-        milestone.style.transform = 'translateX(0) scale(1)';
-    });
-});
-
-// Add floating animation to badges
-function animateBadges() {
-    const badges = document.querySelectorAll('.badge-item');
-    badges.forEach((badge, index) => {
-        const delay = index * 0.5;
-        badge.style.animationDelay = `${delay}s`;
-
-        // Random float animation
-        setInterval(() => {
-            const randomY = (Math.random() - 0.5) * 10;
-            const currentTransform = badge.style.transform || 'translateY(0px)';
-            badge.style.transform = `translateY(${randomY}px)`;
-        }, 3000 + (index * 500));
-    });
-}
-
-// Initialize badge animations after page load
-setTimeout(animateBadges, 1000);
-
-// Add tilt effect to project booths
-const projectBooths = document.querySelectorAll('.project-booth');
-projectBooths.forEach(booth => {
-    booth.addEventListener('mousemove', (e) => {
-        const rect = booth.getBoundingClientRect();
+// Add 3D tilt effect to project cards
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
 
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
+        const rotateX = (y - centerY) / 15;
+        const rotateY = (centerX - x) / 15;
 
-        booth.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px)`;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
     });
 
-    booth.addEventListener('mouseleave', () => {
-        booth.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-    });
-});
-
-// Add pulse animation to contact channels
-const contactChannels = document.querySelectorAll('.contact-channel');
-contactChannels.forEach((channel, index) => {
-    channel.addEventListener('mouseenter', () => {
-        channel.style.transform = 'translateX(15px) scale(1.02)';
-    });
-
-    channel.addEventListener('mouseleave', () => {
-        channel.style.transform = 'translateX(0) scale(1)';
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
     });
 });
 
-// Smooth scroll indicator at the start
+// Scroll hint
 function createScrollHint() {
     if (window.pageYOffset === 0) {
         const hint = document.createElement('div');
@@ -337,19 +296,22 @@ function createScrollHint() {
         hint.innerHTML = `
             <div style="
                 position: fixed;
-                bottom: 30px;
+                bottom: 100px;
                 left: 50%;
                 transform: translateX(-50%);
-                background: rgba(255, 255, 255, 0.95);
+                background: rgba(0, 0, 0, 0.9);
+                border: 3px solid var(--game-primary);
                 padding: 15px 30px;
-                border-radius: 50px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
                 z-index: 999;
                 animation: bounce 2s infinite;
-                font-weight: 600;
-                color: var(--accent-color);
+                font-weight: bold;
+                color: var(--game-secondary);
+                font-size: 12px;
+                font-family: 'Press Start 2P', monospace;
             ">
-                <i class="fas fa-arrow-down"></i> Scroll to begin your journey
+                ↓ PRESS SPACE OR SCROLL ↓
             </div>
         `;
 
@@ -359,33 +321,29 @@ function createScrollHint() {
         const removeHint = () => {
             if (window.pageYOffset > 50) {
                 hint.style.opacity = '0';
+                hint.style.transition = 'opacity 0.3s ease';
                 setTimeout(() => hint.remove(), 300);
                 window.removeEventListener('scroll', removeHint);
             }
         };
 
         window.addEventListener('scroll', removeHint);
+
+        // Also remove on spacebar press
+        const removeOnSpace = (e) => {
+            if (e.code === 'Space') {
+                hint.style.opacity = '0';
+                hint.style.transition = 'opacity 0.3s ease';
+                setTimeout(() => hint.remove(), 300);
+                document.removeEventListener('keydown', removeOnSpace);
+            }
+        };
+        document.addEventListener('keydown', removeOnSpace);
     }
 }
 
 // Show scroll hint after 2 seconds
 setTimeout(createScrollHint, 2000);
-
-// Add sound effects (optional - commented out by default)
-/*
-const sounds = {
-    start: new Audio('path/to/start-sound.mp3'),
-    milestone: new Audio('path/to/milestone-sound.mp3'),
-    complete: new Audio('path/to/complete-sound.mp3')
-};
-
-function playSound(soundName) {
-    if (sounds[soundName]) {
-        sounds[soundName].currentTime = 0;
-        sounds[soundName].play().catch(e => console.log('Audio play failed:', e));
-    }
-}
-*/
 
 // Performance optimization - Throttle scroll events
 function throttle(func, wait) {
@@ -401,14 +359,12 @@ function throttle(func, wait) {
 }
 
 // Apply throttling to scroll handlers
-const throttledUpdateCar = throttle(updateCarPosition, 50);
-const throttledUpdateProgress = throttle(updateProgress, 50);
-const throttledUpdateMilestone = throttle(updateActiveMilestone, 100);
+const throttledUpdateHUD = throttle(updateGameHUD, 50);
+const throttledCalculateSpeed = throttle(calculateSpeed, 50);
 
 window.addEventListener('scroll', () => {
-    throttledUpdateCar();
-    throttledUpdateProgress();
-    throttledUpdateMilestone();
+    throttledUpdateHUD();
+    throttledCalculateSpeed();
 }, { passive: true });
 
 // Add loading animation
@@ -425,25 +381,25 @@ window.addEventListener('load', () => {
 
 // Console welcome message
 console.log(`
-%c🚗 Welcome to Abdul Malik's Career Journey! 🚗
-%cKeyboard Controls:
-- SPACE: Toggle auto-play
-- ESC: Pause journey
-- HOME: Reset to start
-- Arrow Up/Down: Manual scroll
+%c🎮 ABDUL MALIK'S CAREER JOURNEY 🎮
+%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+%cCONTROLS:
+• SPACE    - Start/Stop
+• ESC      - Pause
+• HOME     - Reset
+• ↑/↓      - Manual Drive
 
-%cBuilt with passion for AI and innovation
-%c📧 shaikabdulmalik958@gmail.com
-%c🔗 linkedin.com/in/abdul-malik-khudus-shaik-b46b161ab/
+%cGOOD LUCK!
+%c━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `,
-'font-size: 20px; font-weight: bold; color: #8B7355;',
-'font-size: 14px; color: #667eea;',
-'font-size: 12px; color: #4CAF50; font-style: italic;',
-'font-size: 12px; color: #f5576c;',
-'font-size: 12px; color: #11998e;'
+'font-size: 16px; font-weight: bold; color: #ff6b35; font-family: monospace;',
+'color: #f7931e; font-family: monospace;',
+'font-size: 12px; color: #00ff00; font-family: monospace;',
+'font-size: 14px; color: #ff6b35; font-weight: bold; font-family: monospace;',
+'color: #f7931e; font-family: monospace;'
 );
 
-// Add easter egg - Konami code
+// Easter egg - Konami code
 let konamiCode = [];
 const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 
@@ -457,16 +413,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 function activateEasterEgg() {
-    // Add rainbow colors to the car
-    const car = document.getElementById('travelCar');
-    let hue = 0;
-
-    const rainbowInterval = setInterval(() => {
-        car.style.filter = `hue-rotate(${hue}deg) drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3))`;
-        hue = (hue + 5) % 360;
-    }, 50);
-
-    // Show message
+    // Turbo mode!
     const message = document.createElement('div');
     message.innerHTML = `
         <div style="
@@ -474,28 +421,34 @@ function activateEasterEgg() {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
             color: white;
             padding: 30px 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 5px solid #000;
+            box-shadow: 0 0 40px rgba(255, 107, 53, 0.8);
             z-index: 10000;
             text-align: center;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
+            font-family: 'Press Start 2P', monospace;
         ">
-            🎉 RAINBOW CAR ACTIVATED! 🎉
+            🚀 TURBO MODE! 🚀
         </div>
     `;
 
     document.body.appendChild(message);
 
+    // Activate turbo mode
+    const originalSpeed = scrollSpeed;
+    const car = document.getElementById('gameCar');
+    car.style.filter = 'drop-shadow(0 15px 20px rgba(255, 107, 53, 0.8)) hue-rotate(180deg)';
+
     setTimeout(() => {
         message.style.transition = 'opacity 0.5s ease';
         message.style.opacity = '0';
         setTimeout(() => message.remove(), 500);
-        clearInterval(rainbowInterval);
-        car.style.filter = 'drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3))';
+        car.style.filter = 'drop-shadow(0 15px 20px rgba(0, 0, 0, 0.5))';
     }, 3000);
 }
 
@@ -530,6 +483,22 @@ function handleSwipe() {
 // Add visibility change handler to pause auto-play when tab is hidden
 document.addEventListener('visibilitychange', () => {
     if (document.hidden && isAutoPlaying) {
-        pauseJourney();
+        pauseGame();
     }
 });
+
+// Add sound effects (commented out - enable if you add sound files)
+/*
+const sounds = {
+    engine: new Audio('path/to/engine.mp3'),
+    checkpoint: new Audio('path/to/checkpoint.mp3'),
+    victory: new Audio('path/to/victory.mp3')
+};
+
+function playSound(soundName) {
+    if (sounds[soundName]) {
+        sounds[soundName].currentTime = 0;
+        sounds[soundName].play().catch(e => console.log('Audio play failed:', e));
+    }
+}
+*/
