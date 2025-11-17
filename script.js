@@ -24,6 +24,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Initialize Game
 function initializeGame() {
+    // Set road height to match full page content
+    const road = document.querySelector('.road');
+    const roadLines = document.querySelector('.road-lines');
+    const roadContainer = document.querySelector('.road-container');
+
+    if (road) {
+        const updateRoadHeight = () => {
+            // Calculate the ACTUAL total height needed
+            const body = document.body;
+            const html = document.documentElement;
+
+            const height = Math.max(
+                body.scrollHeight,
+                body.offsetHeight,
+                html.clientHeight,
+                html.scrollHeight,
+                html.offsetHeight
+            );
+
+            console.log('=== ROAD HEIGHT DEBUG ===');
+            console.log('Document height:', height);
+            console.log('Body scrollHeight:', body.scrollHeight);
+            console.log('Container scrollHeight:', roadContainer?.scrollHeight);
+            console.log('Road current height:', road.offsetHeight);
+            console.log('========================');
+
+            // Directly set the road to this height
+            road.style.height = height + 'px';
+
+            if (roadLines) {
+                roadLines.style.height = height + 'px';
+            }
+
+            console.log('Road set to:', height, 'px');
+        };
+
+        // Update multiple times to ensure all content is loaded
+        updateRoadHeight(); // Immediate
+        setTimeout(updateRoadHeight, 100);
+        setTimeout(updateRoadHeight, 500);
+        setTimeout(updateRoadHeight, 1000);
+        setTimeout(updateRoadHeight, 2000);
+
+        // Update on window resize and load
+        window.addEventListener('resize', updateRoadHeight);
+        window.addEventListener('load', updateRoadHeight);
+
+        // Update when images load
+        const images = document.querySelectorAll('img');
+        images.forEach(img => {
+            if (img.complete) {
+                updateRoadHeight();
+            } else {
+                img.addEventListener('load', updateRoadHeight);
+            }
+        });
+    }
+
     // Set current date
     const currentDateElement = document.getElementById('currentDate');
     const today = new Date();
@@ -270,6 +328,11 @@ document.addEventListener('keydown', (e) => {
 const projectCards = document.querySelectorAll('.project-card');
 projectCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
+        // Don't apply tilt effect if hovering over a link
+        if (e.target.closest('a')) {
+            return;
+        }
+
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;

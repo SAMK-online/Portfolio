@@ -6,14 +6,29 @@
 }
 
 :root {
-    --road-color: #3a3a3a;
-    --road-line: #ffd700;
-    --grass-color: #3a8c3f;
-    --sky-color: #4a9eff;
-    --game-primary: #ff6b35;
-    --game-secondary: #f7931e;
+    /* Professional Corporate Theme */
+    --track-asphalt: #1a1a1a;
+    --track-line: #ffffff;
+    --grass-runoff: #1a1f2e;
+    --primary-blue: #2563eb;
+    --accent-blue: #3b82f6;
+    --dark-navy: #1e293b;
+    --slate-gray: #475569;
+    --light-gray: #94a3b8;
+    --gold-accent: #f59e0b;
+    --success-green: #10b981;
     --text-light: #ffffff;
-    --text-dark: #2c2c2c;
+    --text-dark: #0a0a0a;
+    --carbon-fiber: #0f172a;
+
+    /* Alias for compatibility */
+    --ferrari-red: #2563eb;
+    --ferrari-yellow: #3b82f6;
+    --f1-red: #2563eb;
+    --f1-blue: #1e293b;
+    --f1-silver: #94a3b8;
+    --f1-gold: #f59e0b;
+    --neon-cyan: #3b82f6;
 }
 
 html {
@@ -21,11 +36,12 @@ html {
 }
 
 body {
-    font-family: 'Press Start 2P', 'Inter', monospace;
-    background: var(--grass-color);
-    color: var(--text-dark);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0f172a;
+    color: var(--text-light);
     overflow-x: hidden;
     position: relative;
+    font-weight: 400;
 }
 
 /* Game HUD */
@@ -42,14 +58,17 @@ body {
 }
 
 .hud-left, .hud-right {
-    background: rgba(0, 0, 0, 0.85);
-    border: 4px solid var(--game-primary);
-    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.95);
+    border: 2px solid var(--neon-cyan);
+    border-radius: 4px;
     padding: 15px 20px;
     color: var(--text-light);
-    font-size: 12px;
-    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+    font-size: 13px;
+    font-weight: 600;
+    box-shadow: 0 0 30px rgba(255, 242, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
     pointer-events: auto;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.5px;
 }
 
 .hud-stat {
@@ -64,29 +83,34 @@ body {
 }
 
 .hud-label {
-    color: var(--game-secondary);
+    color: var(--f1-silver);
     text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
 }
 
 .hud-value {
-    color: #00ff00;
-    font-weight: bold;
+    color: var(--neon-cyan);
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
 }
 
 .speed-meter {
     margin-top: 10px;
-    height: 8px;
-    background: #333;
-    border-radius: 4px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 2px;
     overflow: hidden;
-    border: 2px solid var(--game-primary);
+    border: 1px solid var(--neon-cyan);
+    box-shadow: inset 0 0 10px rgba(255, 242, 0, 0.2);
 }
 
 .speed-fill {
     height: 100%;
-    background: linear-gradient(90deg, #00ff00, #ffff00, #ff0000);
+    background: var(--ferrari-red);
     width: 0%;
-    transition: width 0.3s ease;
+    transition: width 0.2s ease;
+    box-shadow: 0 0 10px currentColor;
 }
 
 /* Game Controls */
@@ -103,8 +127,8 @@ body {
 .control-btn {
     width: 60px;
     height: 60px;
-    border: 4px solid var(--game-primary);
-    border-radius: 10px;
+    border: 2px solid var(--f1-red);
+    border-radius: 6px;
     background: rgba(0, 0, 0, 0.85);
     color: var(--text-light);
     cursor: pointer;
@@ -113,14 +137,14 @@ body {
     justify-content: center;
     font-size: 24px;
     transition: all 0.2s ease;
-    box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+    box-shadow: 0 0 20px rgba(239, 26, 45, 0.5);
     text-decoration: none;
 }
 
 .control-btn:hover {
-    background: var(--game-primary);
+    background: var(--f1-red);
     transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
+    box-shadow: 0 0 30px rgba(239, 26, 45, 0.8);
 }
 
 .control-btn:active {
@@ -128,7 +152,7 @@ body {
 }
 
 .resume-btn {
-    background: linear-gradient(135deg, #ff6b35, #f7931e);
+    background: var(--ferrari-red);
 }
 
 /* Road Container - Game View */
@@ -136,11 +160,11 @@ body {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    background: var(--grass-color);
+    background: #0f172a;
     perspective: 1000px;
 }
 
-/* Grass Pattern */
+/* Grass Runoff Pattern - F1 Style */
 .road-container::before {
     content: '';
     position: absolute;
@@ -148,78 +172,84 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
+    min-height: 100%;
     background-image:
         repeating-linear-gradient(
             0deg,
             transparent,
-            transparent 50px,
-            rgba(0, 0, 0, 0.05) 50px,
-            rgba(0, 0, 0, 0.05) 100px
+            transparent 30px,
+            rgba(0, 0, 0, 0.1) 30px,
+            rgba(0, 0, 0, 0.1) 60px
         ),
         repeating-linear-gradient(
             90deg,
             transparent,
-            transparent 50px,
-            rgba(0, 0, 0, 0.05) 50px,
-            rgba(0, 0, 0, 0.05) 100px
+            transparent 30px,
+            rgba(0, 0, 0, 0.1) 30px,
+            rgba(0, 0, 0, 0.1) 60px
         );
     pointer-events: none;
+    opacity: 0.5;
 }
 
-/* The Road - Top-down perspective */
+/* Professional Track */
 .road {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: 400px;
-    height: 100%;
+    width: 450px;
+    top: 0;
+    /* height set by JavaScript */
+    z-index: 0;
     background: linear-gradient(to right,
-        #2a2a2a 0%,
-        #3a3a3a 5%,
-        #4a4a4a 50%,
-        #3a3a3a 95%,
-        #2a2a2a 100%);
+        #0a0a0a 0%,
+        #1e293b 5%,
+        #334155 50%,
+        #1e293b 95%,
+        #0a0a0a 100%);
     box-shadow:
-        -20px 0 40px rgba(0, 0, 0, 0.6),
-        20px 0 40px rgba(0, 0, 0, 0.6),
-        inset 0 0 100px rgba(0, 0, 0, 0.4);
+        -30px 0 60px rgba(0, 0, 0, 0.8),
+        30px 0 60px rgba(0, 0, 0, 0.8),
+        inset 0 0 100px rgba(0, 0, 0, 0.6);
 }
 
-/* Road Lines */
+/* Track Center Line */
 .road-lines {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 10px;
+    width: 12px;
     height: 100%;
     background: repeating-linear-gradient(
         to bottom,
         transparent 0px,
-        transparent 40px,
-        var(--road-line) 40px,
-        var(--road-line) 80px
+        transparent 50px,
+        var(--track-line) 50px,
+        var(--track-line) 100px
     );
-    animation: roadMove 1s linear infinite;
+    animation: roadMove 0.8s linear infinite;
+    opacity: 0.8;
 }
 
-/* Side Lines */
+/* Track Edge Lines */
 .road::before,
 .road::after {
     content: '';
     position: absolute;
     top: 0;
-    width: 4px;
+    width: 3px;
     height: 100%;
-    background: var(--road-line);
+    background: var(--track-line);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
 .road::before {
-    left: 20px;
+    left: 18px;
 }
 
 .road::after {
-    right: 20px;
+    right: 18px;
 }
 
 @keyframes roadMove {
@@ -249,65 +279,81 @@ body {
     right: 0;
 }
 
-/* Car Sprite - Top-down view */
+/* F1 Car - Top-down view */
 .car {
     position: fixed;
     left: 50%;
     top: 60%;
     transform: translateX(-50%) translateY(-50%);
-    width: 60px;
-    height: 100px;
-    z-index: 100;
-    filter: drop-shadow(0 15px 20px rgba(0, 0, 0, 0.5));
+    width: 70px;
+    height: 140px;
+    z-index: 5;
+    filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 15px rgba(37, 99, 235, 0.5));
     transition: transform 0.1s ease;
 }
 
-/* Car body using CSS */
+/* Professional Car body - Aerodynamic shape */
 .car::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg,
-        #ff3333 0%,
-        #ff5555 20%,
-        #ff1111 50%,
-        #cc0000 80%,
-        #990000 100%);
+    background:
+        linear-gradient(180deg,
+            #2563eb 0%,
+            #1d4ed8 20%,
+            #2563eb 40%,
+            #3b82f6 50%,
+            #2563eb 60%,
+            #1e40af 80%,
+            #1e3a8a 100%
+        );
     clip-path: polygon(
-        30% 0%,
-        70% 0%,
-        85% 10%,
-        95% 30%,
-        100% 50%,
-        100% 80%,
-        95% 90%,
-        90% 100%,
-        10% 100%,
-        5% 90%,
-        0% 80%,
-        0% 50%,
-        5% 30%,
-        15% 10%
+        /* Front Wing */
+        40% 0%, 60% 0%,
+        /* Front Section */
+        55% 5%, 65% 15%, 70% 20%,
+        /* Side Pod Right */
+        75% 25%, 80% 35%, 85% 45%,
+        /* Rear Right */
+        85% 70%, 80% 85%, 75% 90%,
+        /* Rear Wing Right */
+        70% 95%, 65% 98%, 60% 100%,
+        /* Rear Center */
+        50% 100%,
+        /* Rear Wing Left */
+        40% 100%, 35% 98%, 30% 95%,
+        /* Rear Left */
+        25% 90%, 20% 85%, 15% 70%,
+        /* Side Pod Left */
+        15% 45%, 20% 35%, 25% 25%,
+        /* Front Section Left */
+        30% 20%, 35% 15%, 45% 5%
     );
-    border: 2px solid #660000;
+    border: 1px solid rgba(0, 0, 0, 0.8);
     box-shadow:
-        inset 0 5px 15px rgba(255, 255, 255, 0.3),
-        inset 0 -5px 15px rgba(0, 0, 0, 0.5);
+        inset 0 2px 10px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 10px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(37, 99, 235, 0.4);
 }
 
-/* Car windows */
+/* Cockpit/Halo */
 .car::after {
     content: '';
     position: absolute;
-    top: 15%;
-    left: 20%;
-    width: 60%;
-    height: 25%;
-    background: linear-gradient(180deg, #4a9eff 0%, #2a6eff 100%);
-    border: 2px solid #000;
-    border-radius: 3px;
-    opacity: 0.7;
+    top: 28%;
+    left: 30%;
+    width: 40%;
+    height: 20%;
+    background:
+        radial-gradient(ellipse,
+            rgba(59, 130, 246, 0.3) 0%,
+            rgba(37, 99, 235, 0.5) 50%,
+            rgba(0, 0, 0, 0.8) 100%
+        );
+    border: 2px solid rgba(0, 0, 0, 0.9);
+    border-radius: 50% / 40%;
+    box-shadow: inset 0 2px 5px rgba(59, 130, 246, 0.4);
 }
 
 /* Car wobble animation */
@@ -332,6 +378,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 120px 40px 80px;
+    z-index: 10;
 }
 
 /* Landmark Markers on roadside */
@@ -344,16 +391,16 @@ body {
 }
 
 .landmark-sign {
-    background: linear-gradient(135deg, var(--game-primary), var(--game-secondary));
-    border: 5px solid #000;
-    border-radius: 15px;
+    background: var(--ferrari-red);
+    border: 2px solid var(--ferrari-yellow);
+    border-radius: 8px;
     padding: 20px 40px;
     color: white;
     font-size: 16px;
     text-align: center;
     box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.5),
-        0 0 30px rgba(255, 107, 53, 0.6);
+        0 0 30px rgba(239, 26, 45, 0.6);
     text-transform: uppercase;
     animation: signBounce 2s ease-in-out infinite;
 }
@@ -393,18 +440,18 @@ body {
 
 .location-panel {
     background: rgba(0, 0, 0, 0.9);
-    border: 5px solid var(--game-primary);
-    border-radius: 15px;
+    border: 2px solid var(--f1-red);
+    border-radius: 8px;
     padding: 30px;
     margin-bottom: 30px;
     box-shadow:
         0 10px 40px rgba(0, 0, 0, 0.5),
-        0 0 40px rgba(255, 107, 53, 0.4);
+        0 0 40px rgba(239, 26, 45, 0.4);
 }
 
 .location-title {
     font-size: 24px;
-    color: var(--game-secondary);
+    color: var(--neon-cyan);
     text-align: center;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -412,27 +459,32 @@ body {
 }
 
 .location-subtitle {
-    font-size: 12px;
-    color: #aaa;
+    font-size: 14px;
+    color: #ccc;
     text-align: center;
     margin-bottom: 30px;
     font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 400;
 }
 
 /* Start Location */
 .start-location {
-    background: linear-gradient(to bottom, #4a9eff 0%, var(--grass-color) 100%);
+    background: transparent;
 }
 
 .current-date {
     font-size: 18px;
-    color: var(--game-primary);
+    color: var(--f1-red);
     text-align: center;
     margin-bottom: 30px;
     padding: 15px;
     background: rgba(0, 0, 0, 0.8);
-    border: 3px solid var(--game-secondary);
-    border-radius: 10px;
+    border: 3px solid var(--neon-cyan);
+    border-radius: 6px;
 }
 
 .player-info {
@@ -443,9 +495,9 @@ body {
 }
 
 .player-card {
-    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-    border: 4px solid var(--game-primary);
-    border-radius: 15px;
+    background: #1a1a1a;
+    border: 2px solid var(--f1-red);
+    border-radius: 8px;
     padding: 25px;
     text-align: center;
 }
@@ -454,9 +506,9 @@ body {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    border: 5px solid var(--game-secondary);
+    border: 2px solid var(--neon-cyan);
     margin: 0 auto 20px;
-    box-shadow: 0 0 30px rgba(247, 147, 30, 0.6);
+    box-shadow: 0 0 30px rgba(255, 242, 0, 0.6);
     object-fit: cover;
 }
 
@@ -468,7 +520,7 @@ body {
 
 .player-class {
     font-size: 12px;
-    color: var(--game-secondary);
+    color: var(--neon-cyan);
     margin-bottom: 15px;
     font-family: 'Inter', sans-serif;
 }
@@ -490,8 +542,8 @@ body {
 .social-btn {
     width: 45px;
     height: 45px;
-    background: var(--game-primary);
-    border: 3px solid var(--game-secondary);
+    background: var(--f1-red);
+    border: 3px solid var(--neon-cyan);
     border-radius: 8px;
     color: white;
     display: flex;
@@ -503,47 +555,200 @@ body {
 }
 
 .social-btn:hover {
-    background: var(--game-secondary);
+    background: var(--neon-cyan);
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(247, 147, 30, 0.8);
+    box-shadow: 0 0 20px rgba(255, 242, 0, 0.8);
 }
 
-.player-stats {
+.professional-summary {
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid var(--neon-cyan);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(255, 242, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid var(--f1-red);
+    padding-bottom: 10px;
+}
+
+.summary-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #e8e8e8;
+    margin-bottom: 18px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    text-align: justify;
+}
+
+.expertise-badges {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 242, 0, 0.2);
+}
+
+.expertise-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(225, 6, 0, 0.15);
+    border: 1px solid var(--f1-red);
+    color: var(--neon-cyan);
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.expertise-badge i {
+    font-size: 12px;
+    color: var(--f1-red);
+}
+
+.expertise-badge:hover {
+    background: var(--f1-red);
+    border-color: var(--neon-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(225, 6, 0, 0.4);
+}
+
+/* Featured Posts Section */
+.featured-posts-section {
+    background: transparent;
+}
+
+.posts-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
 }
 
-.stat-box {
-    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-    border: 3px solid var(--game-primary);
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
+.post-card {
+    background: #1a1a1a;
+    border: 2px solid var(--primary-blue);
+    border-radius: 8px;
+    overflow: hidden;
     transition: all 0.3s ease;
 }
 
-.stat-box:hover {
-    border-color: var(--game-secondary);
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255, 107, 53, 0.4);
+.post-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.6);
 }
 
-.stat-icon {
-    font-size: 40px;
-    color: var(--game-secondary);
-    margin-bottom: 15px;
+.post-header {
+    background: var(--primary-blue);
+    padding: 15px 20px;
+    text-align: center;
 }
 
-.stat-label {
+.post-badge {
+    display: inline-block;
+    background: var(--gold-accent);
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 20px;
     font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.post-image {
+    width: 100%;
+    overflow: hidden;
+    background: #0a0a0a;
+}
+
+.post-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.post-card:hover .post-img {
+    transform: scale(1.05);
+}
+
+.post-body {
+    padding: 25px;
+}
+
+.post-title {
+    font-size: 16px;
     color: white;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.post-excerpt {
+    font-size: 12px;
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    font-family: 'Inter', sans-serif;
+}
+
+.post-meta {
+    margin-bottom: 20px;
+}
+
+.post-hashtags {
+    font-size: 11px;
+    color: var(--accent-blue);
+    font-style: italic;
+    font-family: 'Inter', sans-serif;
+}
+
+.post-link {
+    display: block;
+    background: var(--primary-blue);
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 11px;
+    transition: all 0.2s ease;
+    border: 2px solid var(--accent-blue);
+    font-weight: 600;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.post-link:hover {
+    background: var(--accent-blue);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.6);
 }
 
 /* Projects Park */
 .projects-park {
-    background: linear-gradient(to bottom, var(--grass-color) 0%, #2a6a2f 100%);
+    background: transparent;
 }
 
 .projects-grid {
@@ -553,32 +758,32 @@ body {
 }
 
 .project-card {
-    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-    border: 4px solid var(--game-primary);
-    border-radius: 15px;
+    background: #1a1a1a;
+    border: 2px solid var(--f1-red);
+    border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .project-card:hover {
-    border-color: var(--game-secondary);
+    border-color: var(--neon-cyan);
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+    box-shadow: 0 15px 40px rgba(239, 26, 45, 0.6);
 }
 
 .project-card.featured {
     grid-column: 1 / -1;
-    border: 5px solid #f7931e;
-    box-shadow: 0 10px 30px rgba(247, 147, 30, 0.4);
-    background: linear-gradient(135deg, #2a1a0a, #3a2a1a);
+    border: 2px solid var(--ferrari-yellow);
+    box-shadow: 0 10px 30px rgba(255, 242, 0, 0.4);
+    background: #1a1a1a;
 }
 
 .project-card.featured:hover {
-    box-shadow: 0 20px 50px rgba(247, 147, 30, 0.7);
+    box-shadow: 0 20px 50px rgba(255, 242, 0, 0.7);
 }
 
 .project-card.featured .project-header {
-    background: linear-gradient(135deg, var(--game-primary), var(--game-secondary));
+    background: var(--f1-red);
 }
 
 .project-card.featured .project-title {
@@ -590,10 +795,10 @@ body {
 }
 
 .project-header {
-    background: var(--game-primary);
+    background: var(--f1-red);
     padding: 20px;
     text-align: center;
-    border-bottom: 3px solid var(--game-secondary);
+    border-bottom: 3px solid var(--neon-cyan);
 }
 
 .project-icon {
@@ -628,9 +833,9 @@ body {
 }
 
 .tag {
-    background: rgba(255, 107, 53, 0.2);
-    border: 2px solid var(--game-primary);
-    color: var(--game-secondary);
+    background: rgba(239, 26, 45, 0.2);
+    border: 2px solid var(--ferrari-red);
+    color: var(--ferrari-yellow);
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 8px;
@@ -639,7 +844,7 @@ body {
 
 .project-link {
     display: block;
-    background: var(--game-primary);
+    background: var(--f1-red);
     color: white;
     text-align: center;
     padding: 12px;
@@ -647,17 +852,20 @@ body {
     text-decoration: none;
     font-size: 10px;
     transition: all 0.2s ease;
-    border: 2px solid var(--game-secondary);
+    border: 2px solid var(--neon-cyan);
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
 }
 
 .project-link:hover {
-    background: var(--game-secondary);
+    background: var(--neon-cyan);
     transform: scale(1.05);
 }
 
 /* Career Town */
 .career-town {
-    background: linear-gradient(to bottom, #3a8c3f 0%, #2a5a2f 100%);
+    background: transparent;
 }
 
 .career-grid {
@@ -667,9 +875,9 @@ body {
 }
 
 .career-building {
-    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-    border: 4px solid var(--game-primary);
-    border-radius: 15px;
+    background: #1a1a1a;
+    border: 2px solid var(--f1-red);
+    border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
@@ -681,14 +889,14 @@ body {
 
 .career-building:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+    box-shadow: 0 15px 40px rgba(239, 26, 45, 0.6);
 }
 
 .building-roof {
-    background: var(--game-primary);
+    background: var(--f1-red);
     padding: 20px;
     text-align: center;
-    border-bottom: 3px solid var(--game-secondary);
+    border-bottom: 3px solid var(--neon-cyan);
 }
 
 .building-icon {
@@ -708,7 +916,7 @@ body {
 
 .building-date {
     font-size: 10px;
-    color: var(--game-secondary);
+    color: var(--neon-cyan);
     margin-bottom: 8px;
 }
 
@@ -729,7 +937,7 @@ body {
 
 /* Achievement Avenue */
 .achievement-avenue {
-    background: linear-gradient(to bottom, #2a5a2f 0%, #1a4a1f 100%);
+    background: transparent;
 }
 
 .achievement-grid {
@@ -739,29 +947,29 @@ body {
 }
 
 .achievement-card {
-    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-    border: 4px solid var(--game-primary);
-    border-radius: 15px;
+    background: #1a1a1a;
+    border: 2px solid var(--f1-red);
+    border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .achievement-card:hover {
-    border-color: var(--game-secondary);
+    border-color: var(--neon-cyan);
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+    box-shadow: 0 15px 40px rgba(239, 26, 45, 0.6);
 }
 
 .achievement-trophy {
-    background: linear-gradient(135deg, #ffd700, #ffaa00);
+    background: var(--gold-accent);
     padding: 25px;
     text-align: center;
-    border-bottom: 3px solid var(--game-secondary);
+    border-bottom: 3px solid var(--primary-blue);
 }
 
 .trophy-icon {
     font-size: 50px;
-    color: white;
+    color: #ffffff;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
 }
 
@@ -777,7 +985,7 @@ body {
 
 .achievement-date {
     font-size: 10px;
-    color: var(--game-secondary);
+    color: var(--neon-cyan);
     margin-bottom: 8px;
 }
 
@@ -804,9 +1012,9 @@ body {
 }
 
 .badge {
-    background: rgba(255, 215, 0, 0.2);
-    border: 2px solid #ffd700;
-    color: #ffd700;
+    background: rgba(245, 158, 11, 0.2);
+    border: 2px solid var(--gold-accent);
+    color: var(--gold-accent);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 8px;
@@ -815,7 +1023,7 @@ body {
 
 /* Skills Station */
 .skills-station {
-    background: linear-gradient(to bottom, #1a4a1f 0%, #0a3a0f 100%);
+    background: transparent;
 }
 
 .skills-grid {
@@ -825,24 +1033,24 @@ body {
 }
 
 .skill-machine {
-    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-    border: 4px solid var(--game-primary);
-    border-radius: 15px;
+    background: #1a1a1a;
+    border: 2px solid var(--f1-red);
+    border-radius: 8px;
     overflow: hidden;
     transition: all 0.3s ease;
 }
 
 .skill-machine:hover {
-    border-color: var(--game-secondary);
+    border-color: var(--neon-cyan);
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.6);
+    box-shadow: 0 15px 40px rgba(239, 26, 45, 0.6);
 }
 
 .machine-top {
-    background: linear-gradient(135deg, var(--game-primary), var(--game-secondary));
+    background: var(--f1-red);
     padding: 25px;
     text-align: center;
-    border-bottom: 3px solid #000;
+    border-bottom: 3px solid var(--ferrari-yellow);
 }
 
 .machine-icon {
@@ -867,24 +1075,24 @@ body {
 }
 
 .skill-chip {
-    background: linear-gradient(135deg, var(--game-primary), var(--game-secondary));
+    background: var(--f1-red);
     color: white;
     padding: 8px 14px;
-    border-radius: 20px;
+    border-radius: 8px;
     font-size: 9px;
-    border: 2px solid #000;
+    border: 2px solid var(--ferrari-yellow);
     transition: all 0.2s ease;
     font-family: 'Inter', sans-serif;
 }
 
 .skill-chip:hover {
     transform: scale(1.1);
-    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.6);
+    box-shadow: 0 5px 15px rgba(239, 26, 45, 0.6);
 }
 
 /* Contact Destination */
 .contact-destination {
-    background: linear-gradient(to bottom, #0a3a0f 0%, #002200 100%);
+    background: transparent;
 }
 
 .finish-line {
@@ -897,8 +1105,8 @@ body {
     );
     height: 60px;
     margin-bottom: 40px;
-    border: 5px solid var(--game-primary);
-    border-radius: 10px;
+    border: 2px solid var(--f1-red);
+    border-radius: 6px;
     animation: checkeredMove 1s linear infinite;
 }
 
@@ -912,9 +1120,9 @@ body {
 }
 
 .contact-panel {
-    background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-    border: 5px solid var(--game-primary);
-    border-radius: 20px;
+    background: #1a1a1a;
+    border: 2px solid var(--f1-red);
+    border-radius: 8px;
     padding: 40px;
     max-width: 700px;
     margin: 0 auto;
@@ -922,7 +1130,7 @@ body {
 
 .contact-title {
     font-size: 20px;
-    color: var(--game-secondary);
+    color: var(--neon-cyan);
     text-align: center;
     margin-bottom: 15px;
 }
@@ -948,22 +1156,22 @@ body {
     align-items: center;
     gap: 20px;
     padding: 18px;
-    background: rgba(255, 107, 53, 0.1);
-    border: 3px solid var(--game-primary);
-    border-radius: 10px;
+    background: rgba(239, 26, 45, 0.1);
+    border: 2px solid var(--ferrari-yellow);
+    border-radius: 6px;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .contact-method:hover {
-    background: rgba(255, 107, 53, 0.2);
-    border-color: var(--game-secondary);
+    background: rgba(239, 26, 45, 0.2);
+    border-color: var(--ferrari-yellow);
     transform: translateX(10px);
 }
 
 .contact-icon {
     font-size: 30px;
-    color: var(--game-secondary);
+    color: var(--neon-cyan);
     min-width: 40px;
 }
 
@@ -980,11 +1188,11 @@ body {
 }
 
 .game-over {
-    background: linear-gradient(135deg, #00aa00, #006600);
+    background: #00aa00;
     padding: 30px;
-    border-radius: 15px;
+    border-radius: 8px;
     text-align: center;
-    border: 4px solid #00ff00;
+    border: 2px solid #00ff00;
     box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
 }
 
