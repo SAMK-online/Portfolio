@@ -7,28 +7,28 @@
 
 :root {
     /* Professional Corporate Theme */
-    --track-asphalt: #1a1a1a;
-    --track-line: #ffffff;
-    --grass-runoff: #1a1f2e;
-    --primary-blue: #2563eb;
-    --accent-blue: #3b82f6;
-    --dark-navy: #1e293b;
-    --slate-gray: #475569;
-    --light-gray: #94a3b8;
-    --gold-accent: #f59e0b;
-    --success-green: #10b981;
-    --text-light: #ffffff;
-    --text-dark: #0a0a0a;
-    --carbon-fiber: #0f172a;
+    --track-asphalt: #0f121a;
+    --track-line: #d7d9df;
+    --grass-runoff: #0b0d14;
+    --primary-blue: #7a8ba8;
+    --accent-blue: #9cb3d1;
+    --dark-navy: #0d1018;
+    --slate-gray: #1d2330;
+    --light-gray: #aeb4c0;
+    --gold-accent: #c8c3b2;
+    --success-green: #6fb29f;
+    --text-light: #e9edf4;
+    --text-dark: #0a0b0e;
+    --carbon-fiber: #0d1016;
 
     /* Alias for compatibility */
-    --ferrari-red: #2563eb;
-    --ferrari-yellow: #3b82f6;
-    --f1-red: #2563eb;
-    --f1-blue: #1e293b;
-    --f1-silver: #94a3b8;
-    --f1-gold: #f59e0b;
-    --neon-cyan: #3b82f6;
+    --ferrari-red: #7a8ba8;
+    --ferrari-yellow: #9cb3d1;
+    --f1-red: #7a8ba8;
+    --f1-blue: #1d2330;
+    --f1-silver: #aeb4c0;
+    --f1-gold: #c8c3b2;
+    --neon-cyan: #9cb3d1;
 }
 
 html {
@@ -37,7 +37,7 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #0f172a;
+    background: radial-gradient(circle at 10% 20%, #0f1420 0, #0b0e17 50%, #080b12 80%);
     color: var(--text-light);
     overflow-x: hidden;
     position: relative;
@@ -58,17 +58,17 @@ body {
 }
 
 .hud-left, .hud-right {
-    background: rgba(0, 0, 0, 0.95);
-    border: 2px solid var(--neon-cyan);
-    border-radius: 4px;
-    padding: 15px 20px;
+    background: rgba(15, 18, 27, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 14px 18px;
     color: var(--text-light);
     font-size: 13px;
     font-weight: 600;
-    box-shadow: 0 0 30px rgba(255, 242, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: none;
     pointer-events: auto;
-    backdrop-filter: blur(10px);
-    letter-spacing: 0.5px;
+    backdrop-filter: blur(12px);
+    letter-spacing: 0.4px;
 }
 
 .hud-stat {
@@ -98,19 +98,19 @@ body {
 .speed-meter {
     margin-top: 10px;
     height: 6px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.06);
     border-radius: 2px;
     overflow: hidden;
-    border: 1px solid var(--neon-cyan);
-    box-shadow: inset 0 0 10px rgba(255, 242, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: none;
 }
 
 .speed-fill {
     height: 100%;
-    background: var(--ferrari-red);
+    background: linear-gradient(90deg, #8ca8c7, #b9c8dc);
     width: 0%;
     transition: width 0.2s ease;
-    box-shadow: 0 0 10px currentColor;
+    box-shadow: none;
 }
 
 /* Game Controls */
@@ -127,9 +127,9 @@ body {
 .control-btn {
     width: 60px;
     height: 60px;
-    border: 2px solid var(--f1-red);
-    border-radius: 6px;
-    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background: rgba(15, 18, 27, 0.9);
     color: var(--text-light);
     cursor: pointer;
     display: flex;
@@ -137,14 +137,14 @@ body {
     justify-content: center;
     font-size: 24px;
     transition: all 0.2s ease;
-    box-shadow: 0 0 20px rgba(239, 26, 45, 0.5);
+    box-shadow: none;
     text-decoration: none;
 }
 
 .control-btn:hover {
-    background: var(--f1-red);
-    transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(239, 26, 45, 0.8);
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 .control-btn:active {
@@ -152,7 +152,7 @@ body {
 }
 
 .resume-btn {
-    background: var(--ferrari-red);
+    background: rgba(255, 255, 255, 0.12);
 }
 
 /* Road Container - Game View */
@@ -391,18 +391,16 @@ body {
 }
 
 .landmark-sign {
-    background: var(--ferrari-red);
-    border: 2px solid var(--ferrari-yellow);
-    border-radius: 8px;
-    padding: 20px 40px;
+    background: rgba(15, 18, 27, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 16px 32px;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     text-align: center;
-    box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.5),
-        0 0 30px rgba(239, 26, 45, 0.6);
+    box-shadow: none;
     text-transform: uppercase;
-    animation: signBounce 2s ease-in-out infinite;
+    animation: none;
 }
 
 @keyframes signBounce {
@@ -417,7 +415,7 @@ body {
 .landmark-icon {
     font-size: 40px;
     margin-bottom: 10px;
-    animation: iconSpin 3s linear infinite;
+    animation: none;
 }
 
 @keyframes iconSpin {
@@ -439,28 +437,25 @@ body {
 }
 
 .location-panel {
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid var(--f1-red);
-    border-radius: 8px;
+    background: rgba(15, 18, 27, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     padding: 30px;
     margin-bottom: 30px;
-    box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.5),
-        0 0 40px rgba(239, 26, 45, 0.4);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 .location-title {
     font-size: 24px;
-    color: var(--neon-cyan);
+    color: var(--text-light);
     text-align: center;
     margin-bottom: 20px;
     text-transform: uppercase;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .location-subtitle {
     font-size: 14px;
-    color: #ccc;
+    color: var(--light-gray);
     text-align: center;
     margin-bottom: 30px;
     font-family: 'Inter', sans-serif;
@@ -495,10 +490,10 @@ body {
 }
 
 .player-card {
-    background: #1a1a1a;
-    border: 2px solid var(--f1-red);
-    border-radius: 8px;
-    padding: 25px;
+    background: #0f131c;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 24px;
     text-align: center;
 }
 
@@ -506,9 +501,9 @@ body {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    border: 2px solid var(--neon-cyan);
+    border: 2px solid rgba(255, 255, 255, 0.1);
     margin: 0 auto 20px;
-    box-shadow: 0 0 30px rgba(255, 242, 0, 0.6);
+    box-shadow: none;
     object-fit: cover;
 }
 
@@ -561,14 +556,11 @@ body {
 }
 
 .professional-summary {
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid var(--neon-cyan);
-    border-radius: 8px;
+    background: rgba(15, 18, 27, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     padding: 30px;
-    box-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.6),
-        0 0 20px rgba(255, 242, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
     display: flex;
     flex-direction: column;
 }
@@ -576,11 +568,11 @@ body {
 .summary-title {
     font-size: 20px;
     font-weight: 700;
-    color: var(--neon-cyan);
+    color: var(--text-light);
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    border-bottom: 2px solid var(--f1-red);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding-bottom: 10px;
 }
 
@@ -609,10 +601,10 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: rgba(37, 99, 235, 0.1);
-    border: 2px solid var(--primary-blue);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     color: white;
-    padding: 25px 15px;
+    padding: 22px 14px;
     border-radius: 12px;
     font-size: 13px;
     font-weight: 600;
@@ -651,17 +643,18 @@ body {
 }
 
 .post-card {
-    background: #1a1a1a;
-    border: 2px solid var(--primary-blue);
-    border-radius: 8px;
+    background: #0f131c;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 .post-card:hover {
-    border-color: var(--accent-blue);
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(37, 99, 235, 0.6);
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
 }
 
 .post-header {
@@ -765,32 +758,33 @@ body {
 }
 
 .project-card {
-    background: #1a1a1a;
-    border: 2px solid var(--f1-red);
-    border-radius: 8px;
+    background: #0f131c;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 .project-card:hover {
-    border-color: var(--neon-cyan);
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(239, 26, 45, 0.6);
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
 }
 
 .project-card.featured {
     grid-column: 1 / -1;
-    border: 2px solid var(--ferrari-yellow);
-    box-shadow: 0 10px 30px rgba(255, 242, 0, 0.4);
-    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    background: #0f131c;
 }
 
 .project-card.featured:hover {
-    box-shadow: 0 20px 50px rgba(255, 242, 0, 0.7);
+    box-shadow: 0 26px 70px rgba(0, 0, 0, 0.5);
 }
 
 .project-card.featured .project-header {
-    background: var(--f1-red);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .project-card.featured .project-title {
@@ -802,10 +796,10 @@ body {
 }
 
 .project-header {
-    background: var(--f1-red);
+    background: rgba(255, 255, 255, 0.04);
     padding: 20px;
     text-align: center;
-    border-bottom: 3px solid var(--neon-cyan);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .project-icon {
@@ -840,9 +834,9 @@ body {
 }
 
 .tag {
-    background: rgba(239, 26, 45, 0.2);
-    border: 2px solid var(--ferrari-red);
-    color: var(--ferrari-yellow);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--light-gray);
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 8px;
@@ -851,7 +845,7 @@ body {
 
 .project-link {
     display: block;
-    background: var(--f1-red);
+    background: rgba(255, 255, 255, 0.06);
     color: white;
     text-align: center;
     padding: 12px;
@@ -859,15 +853,15 @@ body {
     text-decoration: none;
     font-size: 10px;
     transition: all 0.2s ease;
-    border: 2px solid var(--neon-cyan);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     z-index: 10;
     pointer-events: auto;
 }
 
 .project-link:hover {
-    background: var(--neon-cyan);
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
 }
 
 /* Career Town */
@@ -882,28 +876,28 @@ body {
 }
 
 .career-building {
-    background: #1a1a1a;
-    border: 2px solid var(--f1-red);
-    border-radius: 8px;
+    background: #0f131c;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 .career-building.current {
-    border-color: #00ff00;
-    box-shadow: 0 0 40px rgba(0, 255, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.16);
 }
 
 .career-building:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(239, 26, 45, 0.6);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
 }
 
 .building-roof {
-    background: var(--f1-red);
+    background: rgba(255, 255, 255, 0.04);
     padding: 20px;
     text-align: center;
-    border-bottom: 3px solid var(--neon-cyan);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .building-icon {
@@ -954,24 +948,25 @@ body {
 }
 
 .achievement-card {
-    background: #1a1a1a;
-    border: 2px solid var(--f1-red);
-    border-radius: 8px;
+    background: #0f131c;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 .achievement-card:hover {
-    border-color: var(--neon-cyan);
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(239, 26, 45, 0.6);
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
 }
 
 .achievement-trophy {
-    background: var(--gold-accent);
+    background: rgba(255, 255, 255, 0.05);
     padding: 25px;
     text-align: center;
-    border-bottom: 3px solid var(--primary-blue);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .trophy-icon {
@@ -1040,24 +1035,25 @@ body {
 }
 
 .skill-machine {
-    background: #1a1a1a;
-    border: 2px solid var(--f1-red);
-    border-radius: 8px;
+    background: #0f131c;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 }
 
 .skill-machine:hover {
-    border-color: var(--neon-cyan);
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(239, 26, 45, 0.6);
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateY(-6px);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.4);
 }
 
 .machine-top {
-    background: var(--f1-red);
+    background: rgba(255, 255, 255, 0.04);
     padding: 25px;
     text-align: center;
-    border-bottom: 3px solid var(--ferrari-yellow);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .machine-icon {
@@ -1082,12 +1078,12 @@ body {
 }
 
 .skill-chip {
-    background: var(--f1-red);
+    background: rgba(255, 255, 255, 0.04);
     color: white;
     padding: 8px 14px;
     border-radius: 8px;
     font-size: 9px;
-    border: 2px solid var(--ferrari-yellow);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.2s ease;
     font-family: 'Inter', sans-serif;
 }
@@ -1105,16 +1101,16 @@ body {
 .finish-line {
     background: repeating-linear-gradient(
         45deg,
-        #000,
-        #000 20px,
-        #fff 20px,
-        #fff 40px
+        #0a0a0a,
+        #0a0a0a 20px,
+        #1c1f27 20px,
+        #1c1f27 40px
     );
     height: 60px;
     margin-bottom: 40px;
-    border: 2px solid var(--f1-red);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 6px;
-    animation: checkeredMove 1s linear infinite;
+    animation: checkeredMove 1.8s linear infinite;
 }
 
 @keyframes checkeredMove {
@@ -1127,9 +1123,9 @@ body {
 }
 
 .contact-panel {
-    background: #1a1a1a;
-    border: 2px solid var(--f1-red);
-    border-radius: 8px;
+    background: #0f131c;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
     padding: 40px;
     max-width: 700px;
     margin: 0 auto;
@@ -1137,14 +1133,14 @@ body {
 
 .contact-title {
     font-size: 20px;
-    color: var(--neon-cyan);
+    color: var(--text-light);
     text-align: center;
     margin-bottom: 15px;
 }
 
 .contact-subtitle {
     font-size: 11px;
-    color: #ccc;
+    color: var(--light-gray);
     text-align: center;
     margin-bottom: 30px;
     font-family: 'Inter', sans-serif;
@@ -1163,22 +1159,22 @@ body {
     align-items: center;
     gap: 20px;
     padding: 18px;
-    background: rgba(239, 26, 45, 0.1);
-    border: 2px solid var(--ferrari-yellow);
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
 .contact-method:hover {
-    background: rgba(239, 26, 45, 0.2);
-    border-color: var(--ferrari-yellow);
-    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.16);
+    transform: translateX(6px);
 }
 
 .contact-icon {
     font-size: 30px;
-    color: var(--neon-cyan);
+    color: var(--accent-blue);
     min-width: 40px;
 }
 
