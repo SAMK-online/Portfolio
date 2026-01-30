@@ -194,6 +194,31 @@
             font-size: 2rem;
             color: var(--pirelli-white);
             letter-spacing: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .loading-text.visible {
+            opacity: 1;
+        }
+
+        .click-prompt {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--pirelli-yellow);
+            letter-spacing: 3px;
+            margin-top: 30px;
+            animation: pulse 1.5s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .click-prompt.hidden {
+            display: none;
         }
 
         /* Rev counter animation */
@@ -1402,7 +1427,8 @@
             <div class="start-light" id="light4"></div>
             <div class="start-light" id="light5"></div>
         </div>
-        <div class="loading-text">LIGHTS OUT AND AWAY WE GO</div>
+        <div class="loading-text" id="loadingText">LIGHTS OUT AND AWAY WE GO</div>
+        <div class="click-prompt" id="clickPrompt">[ CLICK TO START ]</div>
     </div>
 
     <div class="cursor"></div>
@@ -2159,8 +2185,15 @@
         }
 
         // Start sequence on first interaction (needed for audio)
+        const clickPrompt = document.getElementById('clickPrompt');
+        const loadingText = document.getElementById('loadingText');
+
         function startRaceSequence() {
             initAudio();
+
+            // Hide click prompt and show loading text
+            clickPrompt.classList.add('hidden');
+            loadingText.classList.add('visible');
 
             let lightIndex = 0;
             const lightInterval = setInterval(() => {
@@ -2187,7 +2220,7 @@
             }, 400);
         }
 
-        // Auto-start after a brief moment, or on click for audio
+        // Only start on user click (required for audio in browsers)
         let raceStarted = false;
 
         document.addEventListener('click', () => {
@@ -2196,14 +2229,6 @@
                 startRaceSequence();
             }
         }, { once: true });
-
-        // Also start automatically after 500ms (sound may not play without interaction)
-        setTimeout(() => {
-            if (!raceStarted) {
-                raceStarted = true;
-                startRaceSequence();
-            }
-        }, 500);
 
         // Register ScrollTrigger
         gsap.registerPlugin(ScrollTrigger);
