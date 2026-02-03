@@ -1414,6 +1414,184 @@
                 cursor: auto;
             }
         }
+
+        /* Pit Lane - Photo Carousel */
+        .pit-lane {
+            padding: 10rem 5vw;
+            background: var(--carbon-fiber);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .carousel-track-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.3);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            position: relative;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 600px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .carousel-slide .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: var(--text-light);
+        }
+
+        .slide-caption h4 {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold-accent);
+        }
+
+        .slide-caption p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Carousel Navigation Arrows */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 18, 27, 0.9);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: -25px;
+        }
+
+        .carousel-btn.next {
+            right: -25px;
+        }
+
+        /* Carousel Dots */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .carousel-dot.active {
+            background: var(--gold-accent);
+            border-color: var(--gold-accent);
+            transform: scale(1.2);
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .carousel-control-btn {
+            background: rgba(15, 18, 27, 0.9);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-light);
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-control-btn:hover {
+            background: var(--primary-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .carousel-control-btn.active {
+            background: var(--success-green);
+            border-color: var(--success-green);
+        }
+
+        /* Responsive carousel */
+        @media (max-width: 968px) {
+            .carousel-slide img {
+                height: 400px;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .carousel-btn.prev {
+                left: 10px;
+            }
+
+            .carousel-btn.next {
+                right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1490,6 +1668,7 @@
             <a href="#projects">Garage</a>
             <a href="#skills">Setup</a>
             <a href="#trophies">Trophies</a>
+            <a href="#pitlane">Pit Lane</a>
             <a href="#education">Training</a>
             <a href="#contact">Radio</a>
         </div>
@@ -2040,10 +2219,91 @@
         </div>
     </section>
 
+    <!-- Pit Lane - Photo Carousel -->
+    <section class="pit-lane" id="pitlane">
+        <div class="section-header">
+            <div class="section-number">06</div>
+            <h2 class="section-title">Pit Lane</h2>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-track-wrapper">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide">
+                        <img src="images/slides/1.jpeg" alt="CURSOR Hackathon">
+                        <div class="slide-caption">
+                            <h4>CURSOR - Hackathon</h4>
+                            <p>Washington, DC</p>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="images/slides/2.jpeg" alt="Accelerating AI with Google Cloud Run">
+                        <div class="slide-caption">
+                            <h4>Accelerating AI with Google Cloud Run</h4>
+                            <p>Reston, VA</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <img src="images/slides/3.jpeg" alt="AWS Summit">
+                        <div class="slide-caption">
+                            <h4>AWS Summit</h4>
+                            <p>Washington, DC</p>
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="carousel-slide">
+                        <img src="images/slides/4.jpeg" alt="Unitree Robotics @ FUSE,GMU">
+                        <div class="slide-caption">
+                            <h4>Unitree Robotics @ FUSE, GMU</h4>
+                            <p>Arlington, VA</p>
+                        </div>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="carousel-slide">
+                        <img src="images/slides/5.jpeg" alt="NVIDIA Agents for Impact Hackathon">
+                        <div class="slide-caption">
+                            <h4>NVIDIA - Agents for Impact Hackathon</h4>
+                            <p>Howard University, DC</p>
+                        </div>
+                    </div>
+                    <!-- Slide 6 -->
+                    <div class="carousel-slide">
+                        <img src="images/slides/6.jpeg" alt="Consumer AI Hackathon">
+                        <div class="slide-caption">
+                            <h4>Consumer AI Hackathon</h4>
+                            <p>Elevenlabs, NYC</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <button class="carousel-btn prev" id="carouselPrev" aria-label="Previous slide">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next" id="carouselNext" aria-label="Next slide">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Dots Navigation -->
+        <div class="carousel-dots" id="carouselDots"></div>
+
+        <!-- Auto-play Controls -->
+        <div class="carousel-controls">
+            <button class="carousel-control-btn active" id="carouselAutoPlay">
+                <i class="fas fa-pause"></i> Auto
+            </button>
+        </div>
+    </section>
+
     <!-- Education Section -->
     <section class="education" id="education">
         <div class="section-header">
-            <div class="section-number">06</div>
+            <div class="section-number">07</div>
             <h2 class="section-title">Training</h2>
         </div>
 
@@ -2632,6 +2892,129 @@
             animate: true,
             color: '#141414'
         });
+
+        // Pit Lane Photo Carousel
+        const carouselTrack = document.getElementById('carouselTrack');
+        const carouselDots = document.getElementById('carouselDots');
+        const prevBtn = document.getElementById('carouselPrev');
+        const nextBtn = document.getElementById('carouselNext');
+        const autoPlayBtn = document.getElementById('carouselAutoPlay');
+
+        if (carouselTrack) {
+            const slides = carouselTrack.querySelectorAll('.carousel-slide');
+            let currentSlide = 0;
+            let autoPlayInterval = null;
+            let isAutoPlaying = true;
+
+            // Create dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                carouselDots.appendChild(dot);
+            });
+
+            const dots = carouselDots.querySelectorAll('.carousel-dot');
+
+            function updateCarousel() {
+                carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateCarousel();
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateCarousel();
+            }
+
+            function startAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(nextSlide, 4000);
+                isAutoPlaying = true;
+                autoPlayBtn.innerHTML = '<i class="fas fa-pause"></i> Auto';
+                autoPlayBtn.classList.add('active');
+            }
+
+            function stopAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = null;
+                }
+                isAutoPlaying = false;
+                autoPlayBtn.innerHTML = '<i class="fas fa-play"></i> Auto';
+                autoPlayBtn.classList.remove('active');
+            }
+
+            function toggleAutoPlay() {
+                if (isAutoPlaying) {
+                    stopAutoPlay();
+                } else {
+                    startAutoPlay();
+                }
+            }
+
+            // Event listeners
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopAutoPlay();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopAutoPlay();
+            });
+
+            autoPlayBtn.addEventListener('click', toggleAutoPlay);
+
+            // Touch/swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            carouselTrack.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carouselTrack.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                    stopAutoPlay();
+                }
+            }
+
+            // Start auto-play
+            startAutoPlay();
+
+            // Pause on hover
+            carouselTrack.addEventListener('mouseenter', stopAutoPlay);
+            carouselTrack.addEventListener('mouseleave', () => {
+                if (!isAutoPlaying) return;
+                startAutoPlay();
+            });
+        }
     </script>
 </body>
 </html>
