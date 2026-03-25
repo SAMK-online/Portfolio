@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pit Lane | Abdul Shaik</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500;700&family=Teko:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <div class="racing-lines">
+        <div class="racing-line"></div>
+        <div class="racing-line"></div>
+        <div class="racing-line"></div>
+        <div class="racing-line"></div>
+        <div class="racing-line"></div>
+    </div>
+
+    <div class="speed-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="glow-pulse"></div>
+    <div class="glow-pulse"></div>
+
+    <div class="drs-zone" id="drsZone"></div>
+
+    <div class="rev-counter" id="revCounter">
+        <div class="rev-light"></div>
+        <div class="rev-light"></div>
+        <div class="rev-light"></div>
+        <div class="rev-light"></div>
+        <div class="rev-light"></div>
+        <div class="rev-light"></div>
+        <div class="rev-light"></div>
+        <div class="rev-light"></div>
+        <div class="rev-light"></div>
+        <div class="rev-light"></div>
+    </div>
+
+    <div class="tire-mark tire-mark-1"></div>
+    <div class="tire-mark tire-mark-2"></div>
+    <div class="tire-mark tire-mark-3"></div>
+
+    <nav>
+        <a href="index.html" class="logo">ABDUL SHAIK</a>
+    </nav>
+
+    <div class="pill-nav" id="pillNav">
+        <div class="pill-collapsed-view">
+            <span id="pillActiveLabel">Home</span>
+        </div>
+        <div class="pill-expanded-view">
+            <a href="index.html" class="pill-item">Home</a>
+            <a href="index.html#about" class="pill-item">Driver</a>
+            <a href="experience.html" class="pill-item">Seasons</a>
+            <a href="projects.html" class="pill-item">Garage</a>
+            <a href="skills.html" class="pill-item">Setup</a>
+            <a href="trophies.html" class="pill-item">Trophies</a>
+            <a href="pitlane.html" class="pill-item">Pit Lane</a>
+            <a href="education.html" class="pill-item">Training</a>
+            <a href="contact.html" class="pill-item">Radio</a>
+        </div>
+    </div>
+
+    <section class="pit-lane" id="pitlane">
+        <div class="section-header">
+            <div class="section-number">06</div>
+            <h2 class="section-title">Pit Lane</h2>
+        </div>
+
+        <div class="card-stack-wrapper">
+            <div class="card-stack-stage" id="cardStackStage" tabindex="0">
+                <div class="card-stack-spotlight"></div>
+                <div class="card-stack-shadow"></div>
+
+                <div class="card-stack-item">
+                    <img src="images/slides/1.jpeg" alt="CURSOR Hackathon" draggable="false">
+                    <div class="card-stack-caption">
+                        <h4>CURSOR — Hackathon</h4>
+                        <p>Washington, DC</p>
+                    </div>
+                </div>
+                <div class="card-stack-item">
+                    <img src="images/slides/2.jpeg" alt="Accelerating AI with Google Cloud Run" draggable="false">
+                    <div class="card-stack-caption">
+                        <h4>Accelerating AI with Google Cloud Run</h4>
+                        <p>Reston, VA</p>
+                    </div>
+                </div>
+                <div class="card-stack-item">
+                    <img src="images/slides/3.jpeg" alt="AWS Summit" draggable="false">
+                    <div class="card-stack-caption">
+                        <h4>AWS Summit</h4>
+                        <p>Washington, DC</p>
+                    </div>
+                </div>
+                <div class="card-stack-item">
+                    <img src="images/slides/4.jpeg" alt="Unitree Robotics @ FUSE, GMU" draggable="false">
+                    <div class="card-stack-caption">
+                        <h4>Unitree Robotics @ FUSE, GMU</h4>
+                        <p>Arlington, VA</p>
+                    </div>
+                </div>
+                <div class="card-stack-item">
+                    <img src="images/slides/5.jpeg" alt="NVIDIA Agents for Impact Hackathon" draggable="false">
+                    <div class="card-stack-caption">
+                        <h4>NVIDIA — Agents for Impact Hackathon</h4>
+                        <p>Howard University, DC</p>
+                    </div>
+                </div>
+                <div class="card-stack-item">
+                    <img src="images/slides/6.jpeg" alt="Consumer AI Hackathon" draggable="false">
+                    <div class="card-stack-caption">
+                        <h4>Consumer AI Hackathon</h4>
+                        <p>ElevenLabs, NYC</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-stack-dots" id="cardStackDots"></div>
+        </div>
+    </section>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>
