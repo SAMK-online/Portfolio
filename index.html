@@ -967,6 +967,81 @@
 
         @media (max-width: 1200px) { .projects-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 900px)  { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+
+        /* Section 8: Press Room / Articles */
+        .press-room {
+            padding: 10rem 5vw;
+            background: var(--carbon-fiber);
+        }
+
+        .press-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.1rem;
+        }
+
+        .press-card {
+            background: #1c1c21;
+            border-radius: 14px;
+            padding: 1.75rem;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--pirelli-red);
+            transition: transform 0.3s cubic-bezier(0.34, 1.4, 0.64, 1), box-shadow 0.3s ease;
+        }
+
+        .press-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+        }
+
+        .press-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.35);
+            margin-bottom: 1rem;
+        }
+
+        .press-source i { margin-right: 0.35rem; color: var(--pirelli-white); }
+
+        .press-title {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.7rem;
+            line-height: 1.12;
+            color: white;
+            margin: 0 0 0.6rem;
+            letter-spacing: 0.02em;
+        }
+
+        .press-excerpt {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            flex: 1;
+            margin: 0 0 1.1rem;
+        }
+
+        .press-link {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: rgba(255, 255, 255, 0.45);
+            transition: color 0.2s ease;
+        }
+        .press-link i { margin-left: 0.35rem; transition: transform 0.2s ease; }
+        .press-card:hover .press-link { color: var(--pirelli-red); }
+        .press-card:hover .press-link i { transform: translateX(4px); }
+
+        @media (max-width: 768px) { .press-grid { grid-template-columns: 1fr; } }
         @media (max-width: 580px)  { .projects-grid { grid-template-columns: 1fr; } }
 
         /* Section 5: Skills / Car Setup */
@@ -1605,6 +1680,7 @@
             <a href="#trophies">Trophies</a>
             <a href="#pitlane">Pit Lane</a>
             <a href="#education">Training</a>
+            <a href="#press">Press</a>
             <a href="#contact">Radio</a>
         </div>
     </nav>
@@ -1815,6 +1891,74 @@
         </div>
 
         <div class="projects-grid">
+
+            <!-- Craft'ed -->
+            <div class="project-card pc-blue">
+                <div class="pc-header">
+                    <span class="pc-category">AI / Networking</span>
+                    <div class="pc-dots"><span></span><span></span><span></span></div>
+                </div>
+                <div class="pc-body">
+                    <h3 class="project-title">Craft'ed</h3>
+                    <p class="project-desc">Self-hosted networking tool — drop a name + company (or snap a business card) at an event and it produces a researched intel brief: who they are, why to follow up, open roles that fit you, a verified email, and ready-to-send outreach.</p>
+                </div>
+                <div class="pc-footer">
+                    <div class="pc-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">Claude</span>
+                        <span class="tech-tag">Supabase</span>
+                    </div>
+                    <div class="pc-actions">
+                        <a href="https://github.com/SAMK-online/Craftd" target="_blank" class="pc-btn github"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why ATS Hates Your Resume -->
+            <div class="project-card pc-orange">
+                <div class="pc-header">
+                    <span class="pc-category">AI / Career Tech</span>
+                    <div class="pc-dots"><span></span><span></span><span></span></div>
+                </div>
+                <div class="pc-body">
+                    <h3 class="project-title">Why ATS Hates Your Resume</h3>
+                    <p class="project-desc">Resume triage app — upload a resume PDF, optionally paste a job description, and get direct feedback on why an ATS or recruiter screen might reject it. Parses into structured sections, scores evidence, and exposes a parser view of what was extracted.</p>
+                </div>
+                <div class="pc-footer">
+                    <div class="pc-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">Claude</span>
+                    </div>
+                    <div class="pc-actions">
+                        <a href="https://github.com/SAMK-online/ats-hates-your-resume" target="_blank" class="pc-btn github"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONNEXTed -->
+            <div class="project-card pc-red">
+                <div class="pc-header">
+                    <span class="pc-category">AI / GTM</span>
+                    <div class="pc-dots"><span></span><span></span><span></span></div>
+                </div>
+                <div class="pc-body">
+                    <h3 class="project-title">CONNEXTed</h3>
+                    <p class="project-desc">WhatsApp-first GTM workflow platform for sales and partnership teams. Discover relevant events and public prospects before attending, then send a business card and notes via WhatsApp for enriched reports, GTM signals, and outreach drafts — gated behind human review.</p>
+                </div>
+                <div class="pc-footer">
+                    <div class="pc-tags">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Claude</span>
+                        <span class="tech-tag">WhatsApp</span>
+                    </div>
+                    <div class="pc-actions">
+                        <a href="https://github.com/SAMK-online/Connexted" target="_blank" class="pc-btn github"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
 
             <!-- MindBridge -->
             <div class="project-card pc-green">
@@ -2285,6 +2429,29 @@
                     Actively building skills in AI/ML, staying updated with latest trends. Participating in hackathons and contributing to open source projects.
                 </p>
             </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Press Room / Articles -->
+    <section class="press-room" id="press">
+        <div class="section-header">
+            <div class="section-number">08</div>
+            <h2 class="section-title">Press Room</h2>
+        </div>
+
+        <div class="press-grid">
+
+            <a href="https://medium.com/@shaikabdulmalik958/you-met-eleven-great-people-at-that-conference-you-followed-up-with-zero-33e548326b5b"
+               target="_blank" class="press-card">
+                <div class="press-meta">
+                    <span class="press-source"><i class="fab fa-medium"></i> Medium</span>
+                    <span class="press-date">Jun 2026 · 11 min read</span>
+                </div>
+                <h3 class="press-title">You Met Eleven Great People at That Conference. You Followed Up With Zero.</h3>
+                <p class="press-excerpt">How I turned the most-skipped step in networking — the follow-up — into a 30-second background job, and the engineering decisions behind a resilient system where every stage fails alone.</p>
+                <span class="press-link">Read on Medium <i class="fas fa-arrow-right"></i></span>
+            </a>
+
         </div>
     </section>
 
