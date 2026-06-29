@@ -287,10 +287,26 @@
             text-decoration: none;
             transition: color 0.3s;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
         }
 
         .nav-links a:hover {
             color: var(--racing-blue);
+        }
+
+        .nav-sub {
+            font-size: 0.6rem;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.4);
+            text-transform: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover .nav-sub {
+            color: rgba(255,255,255,0.7);
         }
 
         .nav-links a::after {
@@ -1673,15 +1689,15 @@
     <nav>
         <div class="logo">ABDUL SHAIK</div>
         <div class="nav-links">
-            <a href="#about">Driver</a>
-            <a href="#experience">Seasons</a>
-            <a href="#projects">Garage</a>
-            <a href="#skills">Setup</a>
-            <a href="#trophies">Trophies</a>
-            <a href="#pitlane">Pit Lane</a>
-            <a href="#education">Training</a>
-            <a href="#press">Press</a>
-            <a href="#contact">Radio</a>
+            <a href="#about">Driver<span class="nav-sub">About</span></a>
+            <a href="#experience">Seasons<span class="nav-sub">Experience</span></a>
+            <a href="#projects">Garage<span class="nav-sub">Projects</span></a>
+            <a href="#skills">Setup<span class="nav-sub">Skills</span></a>
+            <a href="#trophies">Trophies<span class="nav-sub">Awards</span></a>
+            <a href="#pitlane">Pit Lane<span class="nav-sub">Gallery</span></a>
+            <a href="#education">Training<span class="nav-sub">Education</span></a>
+            <a href="#press">Press<span class="nav-sub">Articles</span></a>
+            <a href="#contact">Radio<span class="nav-sub">Contact</span></a>
         </div>
     </nav>
 
